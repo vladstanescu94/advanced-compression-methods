@@ -1,27 +1,13 @@
 import Foundation
 
 struct BitWriter {
-    public let fileName: String
+    public let fileService: FileServiceProtocol
     
     private var buffer: UInt8 = 0
     private var bitsWritten: Int = 0
-    private var fileHandle: FileHandle?
     
-    public init(fileName: String) {
-        self.fileName = fileName
-        
-        let directory = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).last
-        if let fileURL = directory?.appendingPathComponent(fileName) {
-            if !FileManager.default.fileExists(atPath: fileURL.path) {
-                FileManager.default.createFile(atPath: fileURL.path, contents: nil)
-            }
-            
-            do {
-                self.fileHandle = try FileHandle(forWritingTo: fileURL)
-            } catch {
-                print("Could not open file \(error)")
-            }
-        }
+    public init(fileService: FileServiceProtocol) {
+        self.fileService = fileService
     }
     
     public mutating func writeNBits(numberOfBits: Int, value: UInt32) {
@@ -45,8 +31,10 @@ struct BitWriter {
     }
     
     private mutating func writeBufferToFile() {
-        self.fileHandle?.seekToEndOfFile()
-        self.fileHandle?.write(Data(bytes: &buffer, count: 1))
+        guard fileService.fileMode == .write else { return }
+        
+        self.fileService.fileHandle?.seekToEndOfFile()
+        self.fileService.fileHandle?.write(Data(bytes: &buffer, count: 1))
         
         resetBuffer()
         bitsWritten = 0
@@ -54,9 +42,5 @@ struct BitWriter {
     
     private mutating func resetBuffer() {
         buffer = 0
-    }
-    
-    public func closeFileHandle() {
-        self.fileHandle?.closeFile()
     }
 }

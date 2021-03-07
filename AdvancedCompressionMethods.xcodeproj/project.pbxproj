@@ -13,6 +13,8 @@
 		DEC0A3F525F53BCB00E6C565 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEC0A3F425F53BCB00E6C565 /* Preview Assets.xcassets */; };
 		DED0F8B125F53DB30055ABF3 /* BitWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0F8B025F53DB30055ABF3 /* BitWriter.swift */; };
 		DED0F8B425F53DB90055ABF3 /* BitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0F8B325F53DB90055ABF3 /* BitReader.swift */; };
+		DED0F8B725F53E780055ABF3 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0F8B625F53E780055ABF3 /* FileService.swift */; };
+		DED0F8BA25F542DF0055ABF3 /* FileServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0F8B925F542DF0055ABF3 /* FileServiceProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		DEC0A3F725F53BCB00E6C565 /* AdvancedCompressionMethods.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AdvancedCompressionMethods.entitlements; sourceTree = "<group>"; };
 		DED0F8B025F53DB30055ABF3 /* BitWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitWriter.swift; sourceTree = "<group>"; };
 		DED0F8B325F53DB90055ABF3 /* BitReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitReader.swift; sourceTree = "<group>"; };
+		DED0F8B625F53E780055ABF3 /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
+		DED0F8B925F542DF0055ABF3 /* FileServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileServiceProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,8 @@
 			children = (
 				DED0F8B025F53DB30055ABF3 /* BitWriter.swift */,
 				DED0F8B325F53DB90055ABF3 /* BitReader.swift */,
+				DED0F8B625F53E780055ABF3 /* FileService.swift */,
+				DED0F8B925F542DF0055ABF3 /* FileServiceProtocol.swift */,
 			);
 			path = FileOperations;
 			sourceTree = "<group>";
@@ -197,7 +203,9 @@
 				DED0F8B425F53DB90055ABF3 /* BitReader.swift in Sources */,
 				DED0F8B125F53DB30055ABF3 /* BitWriter.swift in Sources */,
 				DEC0A3F025F53BCA00E6C565 /* HomeView.swift in Sources */,
+				DED0F8B725F53E780055ABF3 /* FileService.swift in Sources */,
 				DEC0A3EE25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift in Sources */,
+				DED0F8BA25F542DF0055ABF3 /* FileServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

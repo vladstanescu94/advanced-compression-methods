@@ -1,26 +1,13 @@
 import Foundation
 
 struct BitReader{
-    public let fileName: String
+    public let fileService: FileServiceProtocol
     
     private var buffer: UInt8 = 0
     private var bitsRead: Int = 0
-    private var fileHandle: FileHandle?
     
-    public init(fileName: String) {
-        self.fileName = fileName
-        
-        let directory = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask).last
-        if let fileURL = directory?.appendingPathComponent(fileName),
-           FileManager.default.fileExists(atPath: fileURL.path) {
-            do {
-                self.fileHandle = try FileHandle(forReadingFrom: fileURL)
-            } catch {
-                print("Could not open file \(error)")
-            }
-        } else {
-            print("file not found")
-        }
+    public init(fileService: FileServiceProtocol) {
+        self.fileService = fileService
     }
     
     public mutating func ReadNBits(numberOfBits: Int) -> UInt32? {
@@ -33,7 +20,8 @@ struct BitReader{
     
     public mutating func ReadBit() -> CFBit {
         if isBufferEmpty() {
-            if let data = self.fileHandle?.readData(ofLength: 8),
+            if self.fileService.fileMode == .read,
+               let data = self.fileService.fileHandle?.readData(ofLength: 8),
                data.isEmpty == false {
                 buffer = UInt8(data[0])
                 bitsRead = 8
@@ -54,6 +42,6 @@ struct BitReader{
     }
     
     public func closeFileHandle() {
-        self.fileHandle?.closeFile()
+        self.fileService.fileHandle?.closeFile()
     }
 }
