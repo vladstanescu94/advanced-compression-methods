@@ -79,8 +79,8 @@
 		DEC0A3FE25F53C2900E6C565 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				DED0F8AF25F53D9F0055ABF3 /* FileOperations */,
 				DEC0A3FF25F53C5200E6C565 /* AppDelegate */,
+				DED0F8AF25F53D9F0055ABF3 /* FileOperations */,
 				DEC0A40125F53C6B00E6C565 /* Home */,
 			);
 			path = Features;
@@ -123,8 +123,8 @@
 		DED0F8AF25F53D9F0055ABF3 /* FileOperations */ = {
 			isa = PBXGroup;
 			children = (
-				DED0F8B025F53DB30055ABF3 /* BitWriter.swift */,
 				DED0F8B325F53DB90055ABF3 /* BitReader.swift */,
+				DED0F8B025F53DB30055ABF3 /* BitWriter.swift */,
 				DED0F8B625F53E780055ABF3 /* FileService.swift */,
 				DED0F8B925F542DF0055ABF3 /* FileServiceProtocol.swift */,
 			);
