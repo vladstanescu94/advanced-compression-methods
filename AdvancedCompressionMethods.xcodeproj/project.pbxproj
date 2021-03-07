@@ -11,6 +11,8 @@
 		DEC0A3F025F53BCA00E6C565 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC0A3EF25F53BCA00E6C565 /* HomeView.swift */; };
 		DEC0A3F225F53BCB00E6C565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEC0A3F125F53BCB00E6C565 /* Assets.xcassets */; };
 		DEC0A3F525F53BCB00E6C565 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEC0A3F425F53BCB00E6C565 /* Preview Assets.xcassets */; };
+		DED0F8B125F53DB30055ABF3 /* BitWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0F8B025F53DB30055ABF3 /* BitWriter.swift */; };
+		DED0F8B425F53DB90055ABF3 /* BitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0F8B325F53DB90055ABF3 /* BitReader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		DEC0A3F425F53BCB00E6C565 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DEC0A3F625F53BCB00E6C565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEC0A3F725F53BCB00E6C565 /* AdvancedCompressionMethods.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AdvancedCompressionMethods.entitlements; sourceTree = "<group>"; };
+		DED0F8B025F53DB30055ABF3 /* BitWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitWriter.swift; sourceTree = "<group>"; };
+		DED0F8B325F53DB90055ABF3 /* BitReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 		DEC0A3FE25F53C2900E6C565 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				DED0F8AF25F53D9F0055ABF3 /* FileOperations */,
 				DEC0A3FF25F53C5200E6C565 /* AppDelegate */,
 				DEC0A40125F53C6B00E6C565 /* Home */,
 			);
@@ -109,6 +114,15 @@
 				DEC0A3EF25F53BCA00E6C565 /* HomeView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		DED0F8AF25F53D9F0055ABF3 /* FileOperations */ = {
+			isa = PBXGroup;
+			children = (
+				DED0F8B025F53DB30055ABF3 /* BitWriter.swift */,
+				DED0F8B325F53DB90055ABF3 /* BitReader.swift */,
+			);
+			path = FileOperations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +194,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DED0F8B425F53DB90055ABF3 /* BitReader.swift in Sources */,
+				DED0F8B125F53DB30055ABF3 /* BitWriter.swift in Sources */,
 				DEC0A3F025F53BCA00E6C565 /* HomeView.swift in Sources */,
 				DEC0A3EE25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift in Sources */,
 			);
