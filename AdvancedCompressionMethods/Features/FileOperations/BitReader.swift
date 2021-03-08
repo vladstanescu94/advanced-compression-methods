@@ -10,11 +10,7 @@ class BitReader {
     
     public init(fileService: FileServiceProtocol) {
         self.fileService = fileService
-        do {
-            try fileService.openFile()
-        } catch {
-            print("Could not open file")
-        }
+        self.fileService.openFile()
     }
     
     // MARK: - Read Methods

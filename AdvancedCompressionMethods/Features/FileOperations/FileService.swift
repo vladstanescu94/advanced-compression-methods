@@ -35,26 +35,45 @@ class FileService: FileServiceProtocol {
     
     // MARK: - File Manipulation
     
-    public func openFile() throws {
+    public func openFile() {
         let directory = fileManager.urls(for: .desktopDirectory, in: .userDomainMask).last
         if let fileURL = directory?.appendingPathComponent(fileName) {
-            if !fileManager.fileExists(atPath: fileURL.path) {
-                fileManager.createFile(atPath: fileURL.path, contents: nil)
-            }
-            
-            let fileAttributes = try fileManager.attributesOfItem(atPath: fileURL.path)
-            self.fileSize = (fileAttributes[FileAttributeKey.size] as! NSNumber).uint64Value
+            createFile(path: fileURL.path)
+            getFileSize(path: fileURL.path)
             
             do {
-                switch self.fileMode {
-                case .read:
-                    self.fileHandle = try FileHandle(forReadingFrom: fileURL)
-                case .write:
-                    self.fileHandle = try FileHandle(forWritingTo: fileURL)
-                }
+                try self.createFileHandle(fileURL: fileURL)
             } catch {
-                throw FileServiceError.couldNotOpenFile
+                print("Can't create file handle")
             }
+        }
+    }
+    
+    private func createFile(path: String) {
+        if !fileManager.fileExists(atPath: path) {
+            fileManager.createFile(atPath: path, contents: nil)
+        }
+    }
+    
+    private func getFileSize(path: String) {
+        do {
+            let fileAttributes = try fileManager.attributesOfItem(atPath: path)
+            self.fileSize = (fileAttributes[FileAttributeKey.size] as! NSNumber).uint64Value
+        } catch {
+            print("Can't read file size")
+        }
+    }
+    
+    private func createFileHandle(fileURL: URL) throws {
+        do {
+            switch self.fileMode {
+            case .read:
+                self.fileHandle = try FileHandle(forReadingFrom: fileURL)
+            case .write:
+                self.fileHandle = try FileHandle(forWritingTo: fileURL)
+            }
+        } catch {
+            throw FileServiceError.couldNotOpenFile
         }
     }
 
