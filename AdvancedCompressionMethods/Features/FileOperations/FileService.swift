@@ -26,6 +26,8 @@ class FileService: FileServiceProtocol {
     public let fileManager = FileManager.default
     public var fileHandle: FileHandle? = nil
     
+    private var fileSize:UInt64 = 0
+    
     public init(fileName: String, fileMode: FileMode) {
         self.fileName = fileName
         self.fileMode = fileMode
@@ -36,9 +38,12 @@ class FileService: FileServiceProtocol {
     public func openFile() throws {
         let directory = fileManager.urls(for: .desktopDirectory, in: .userDomainMask).last
         if let fileURL = directory?.appendingPathComponent(fileName) {
-            if !FileManager.default.fileExists(atPath: fileURL.path) {
-                FileManager.default.createFile(atPath: fileURL.path, contents: nil)
+            if !fileManager.fileExists(atPath: fileURL.path) {
+                fileManager.createFile(atPath: fileURL.path, contents: nil)
             }
+            
+            let fileAttributes = try fileManager.attributesOfItem(atPath: fileURL.path)
+            self.fileSize = (fileAttributes[FileAttributeKey.size] as! NSNumber).uint64Value
             
             do {
                 switch self.fileMode {
@@ -63,7 +68,7 @@ class FileService: FileServiceProtocol {
     func readByteFromFile() throws -> Data? {
         guard fileMode == .read else { throw FileServiceError.couldNotReadFile}
         
-        return self.fileHandle?.readData(ofLength: 8)
+        return self.fileHandle?.readData(ofLength: 1)
     }
     
     public func closeFile() {

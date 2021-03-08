@@ -6,9 +6,15 @@ class BitReader {
     
     private var buffer: UInt8 = 0
     private var bitsRead: Int = 0
+    private var totalBitsRead: Int = 0
     
     public init(fileService: FileServiceProtocol) {
         self.fileService = fileService
+        do {
+            try fileService.openFile()
+        } catch {
+            print("Could not open file")
+        }
     }
     
     // MARK: - Read Methods
@@ -16,18 +22,24 @@ class BitReader {
         guard numberOfBits > 0,
               numberOfBits <= 32 else { return nil }
         
-        // TODO
-        return nil
+        var result: UInt32 = 0
+        
+        for _ in 0..<numberOfBits {
+            result <<= 1
+            result += ReadBit()
+        }
+        
+        return result
     }
     
     public func ReadBit() -> CFBit {
         if isBufferEmpty() {
             do {
-                try fileService.openFile()
                 if let data = try self.fileService.readByteFromFile(),
                    data.isEmpty == false {
                     buffer = UInt8(data[0])
                     bitsRead = 8
+                    totalBitsRead += bitsRead
                 }
             } catch {
                 print("Could not read byte from file")
