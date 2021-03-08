@@ -14,18 +14,26 @@ public enum FileMode {
 
 public enum FileServiceError: Error {
     case couldNotOpenFile
+    case couldNotWriteToFile
+    case couldNotReadFile
 }
 
-struct FileService: FileServiceProtocol {
+class FileService: FileServiceProtocol {
+    // MARK: - Properties
+        
     public let fileName: String
     public var fileMode: FileMode
     public let fileManager = FileManager.default
     public var fileHandle: FileHandle? = nil
     
-    public init(fileName: String, fileMode: FileMode) throws {
+    public init(fileName: String, fileMode: FileMode) {
         self.fileName = fileName
         self.fileMode = fileMode
-        
+    }
+    
+    // MARK: - File Manipulation
+    
+    public func openFile() throws {
         let directory = fileManager.urls(for: .desktopDirectory, in: .userDomainMask).last
         if let fileURL = directory?.appendingPathComponent(fileName) {
             if !FileManager.default.fileExists(atPath: fileURL.path) {
@@ -44,8 +52,21 @@ struct FileService: FileServiceProtocol {
             }
         }
     }
+
+    func writeByteToFile(data: Data) throws {
+        guard fileMode == .write else { throw FileServiceError.couldNotWriteToFile}
+        
+        self.fileHandle?.seekToEndOfFile()
+        self.fileHandle?.write(data)
+    }
     
-    public func closeFileHandle() {
+    func readByteFromFile() throws -> Data? {
+        guard fileMode == .read else { throw FileServiceError.couldNotReadFile}
+        
+        return self.fileHandle?.readData(ofLength: 8)
+    }
+    
+    public func closeFile() {
         self.fileHandle?.closeFile()
     }
 }

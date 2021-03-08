@@ -8,7 +8,8 @@
 import Foundation
 
 public protocol FileServiceProtocol {
-    var fileHandle: FileHandle? { get set }
-    var fileMode: FileMode { get set }
-    func closeFileHandle()
+    func openFile() throws
+    func writeByteToFile(data: Data) throws
+    func readByteFromFile() throws -> Data?
+    func closeFile()
 }

@@ -1,6 +1,7 @@
 import Foundation
 
-struct BitWriter {
+class BitWriter {
+    // MARK: - Properties
     public let fileService: FileServiceProtocol
     
     private var buffer: UInt8 = 0
@@ -10,13 +11,14 @@ struct BitWriter {
         self.fileService = fileService
     }
     
-    public mutating func writeNBits(numberOfBits: Int, value: UInt32) {
+    // MARK: - Write Methods
+    public func writeNBits(numberOfBits: Int, value: UInt32) {
         guard numberOfBits > 0,
               numberOfBits <= 32 else { return }
         // TODO
     }
     
-    public mutating func writeBit(bit: CFBit) {
+    public func writeBit(bit: CFBit) {
         buffer <<= 1
         buffer += UInt8(bit)
         bitsWritten += 1
@@ -30,17 +32,33 @@ struct BitWriter {
         return bitsWritten == 8
     }
     
-    private mutating func writeBufferToFile() {
-        guard fileService.fileMode == .write else { return }
+    private func writeBufferToFile() {
+        let data = Data(bytes: &buffer, count: 1)
         
-        self.fileService.fileHandle?.seekToEndOfFile()
-        self.fileService.fileHandle?.write(Data(bytes: &buffer, count: 1))
-        
-        resetBuffer()
-        bitsWritten = 0
+        do {
+            try self.fileService.openFile()
+            try self.fileService.writeByteToFile(data: data)
+            resetBuffer()
+            bitsWritten = 0
+        } catch {
+            print("Could not write to file \(error)")
+        }
     }
     
-    private mutating func resetBuffer() {
+    private func resetBuffer() {
         buffer = 0
+    }
+    
+    // MARK: - Cleanup
+    
+    deinit {
+        close()
+    }
+    
+    public func close() {
+        for _ in 1..<8 {
+            writeBit(bit: 1)
+        }
+        self.fileService.closeFile()
     }
 }
