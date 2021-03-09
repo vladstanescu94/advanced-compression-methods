@@ -9,13 +9,18 @@ class BitWriter {
     
     public init(fileService: FileServiceProtocol) {
         self.fileService = fileService
+        self.fileService.openFile()
     }
     
     // MARK: - Write Methods
     public func writeNBits(numberOfBits: Int, value: UInt32) {
         guard numberOfBits > 0,
               numberOfBits <= 32 else { return }
-        // TODO
+        
+        for i in 1...numberOfBits {
+            let bitToWrite = CFBit((value >> (numberOfBits - i)) & 1)
+            writeBit(bit: bitToWrite)
+        }
     }
     
     public func writeBit(bit: CFBit) {
@@ -23,23 +28,17 @@ class BitWriter {
         buffer += UInt8(bit)
         bitsWritten += 1
         
-        if isBufferFull() {
+        if bitsWritten % 8 == 0 {
             writeBufferToFile()
         }
-    }
-    
-    public func isBufferFull() -> Bool {
-        return bitsWritten == 8
     }
     
     private func writeBufferToFile() {
         let data = Data(bytes: &buffer, count: 1)
         
         do {
-            try self.fileService.openFile()
             try self.fileService.writeByteToFile(data: data)
             resetBuffer()
-            bitsWritten = 0
         } catch {
             print("Could not write to file \(error)")
         }

@@ -25,8 +25,7 @@ class FileService: FileServiceProtocol {
     public var fileMode: FileMode
     public let fileManager = FileManager.default
     public var fileHandle: FileHandle? = nil
-    
-    private var fileSize:UInt64 = 0
+    public var fileSize:UInt64 = 0
     
     public init(fileName: String, fileMode: FileMode) {
         self.fileName = fileName

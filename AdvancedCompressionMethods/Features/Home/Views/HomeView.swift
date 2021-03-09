@@ -20,27 +20,24 @@ struct HomeView: View {
 }
 
 func testStuff() {
-    
-    let bitWriter = BitWriter(
-        fileService: FileService(
-            fileName: "test.txt",
-            fileMode: .write))
-    
-        bitWriter.writeBit(bit: 1)
-        bitWriter.writeBit(bit: 0)
-        bitWriter.writeBit(bit: 1)
-        bitWriter.writeBit(bit: 0)
-        bitWriter.writeBit(bit: 0)
-        bitWriter.writeBit(bit: 0)
-        bitWriter.writeBit(bit: 1)
-//        bitWriter.writeBit(bit: 1)
-    
     let bitReader = BitReader(fileService: FileService(fileName: "test.txt", fileMode: .read))
-    let bitWriter2 = BitWriter(fileService: FileService(fileName: "test2.txt", fileMode: .write))
+    let bitWriter = BitWriter(fileService: FileService(fileName: "test2.txt", fileMode: .write))
     
-    for _ in 0..<8 {
-        bitWriter2.writeBit(bit: bitReader.ReadBit())
-    }
+    guard let service = bitReader.fileService as? FileService else { return }
+    
+    var NBR = 8 * service.fileSize
+    
+    repeat {
+        var nb = Int.random(in: 1...32)
+        
+        if nb > NBR {
+            nb = Int(NBR)
+        }
+        
+        guard let value = bitReader.ReadNBits(numberOfBits: nb) else { return }
+        bitWriter.writeNBits(numberOfBits: nb, value: value)
+        NBR -= UInt64(nb)
+    } while NBR > 0
 }
 
 struct HomeView_Previews: PreviewProvider {
