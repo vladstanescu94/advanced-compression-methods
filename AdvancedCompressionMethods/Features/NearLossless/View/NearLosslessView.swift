@@ -8,8 +8,22 @@
 import SwiftUI
 
 struct NearLosslessView: View {
+    @ObservedObject var encoder = NearLosslessEncoder()
+    @ObservedObject var decoder = NearLosslessDecoder()
+    
     var body: some View {
-        Text("NearLossless")
+        HStack {
+            Button(action: encoder.encode, label: {
+                Text("Encode")
+            })
+            
+            Button(action: decoder.decode, label: {
+                Text("Decode")
+            })
+        }
+        .frame(maxWidth: .infinity,
+               maxHeight: .infinity,
+               alignment: .center)
     }
 }
 

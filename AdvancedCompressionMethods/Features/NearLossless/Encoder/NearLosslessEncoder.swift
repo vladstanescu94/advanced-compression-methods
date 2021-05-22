@@ -7,6 +7,8 @@
 
 import Foundation
 
-class NearLosslessEncoder {
+class NearLosslessEncoder: ObservableObject {
     init() { }
+    
+    public func encode() { }
 }
