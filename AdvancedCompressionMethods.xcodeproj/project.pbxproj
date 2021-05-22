@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DEA879E826591D4900FEB11A /* CheckBitOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879E726591D4900FEB11A /* CheckBitOperations.swift */; };
+		DEA879EA26591E5700FEB11A /* SidebarNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879E926591E5700FEB11A /* SidebarNavigation.swift */; };
+		DEA879EC26591F4200FEB11A /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879EB26591F4200FEB11A /* IntroView.swift */; };
 		DEC0A3EE25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC0A3ED25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift */; };
 		DEC0A3F025F53BCA00E6C565 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC0A3EF25F53BCA00E6C565 /* HomeView.swift */; };
 		DEC0A3F225F53BCB00E6C565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEC0A3F125F53BCB00E6C565 /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		DEA879E726591D4900FEB11A /* CheckBitOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBitOperations.swift; sourceTree = "<group>"; };
+		DEA879E926591E5700FEB11A /* SidebarNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarNavigation.swift; sourceTree = "<group>"; };
+		DEA879EB26591F4200FEB11A /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		DEC0A3EA25F53BCA00E6C565 /* AdvancedCompressionMethods.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdvancedCompressionMethods.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEC0A3ED25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedCompressionMethodsApp.swift; sourceTree = "<group>"; };
 		DEC0A3EF25F53BCA00E6C565 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				DEC0A3EF25F53BCA00E6C565 /* HomeView.swift */,
+				DEA879E926591E5700FEB11A /* SidebarNavigation.swift */,
+				DEA879EB26591F4200FEB11A /* IntroView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -239,6 +245,8 @@
 				DED0F8B125F53DB30055ABF3 /* BitWriter.swift in Sources */,
 				DEC0A3F025F53BCA00E6C565 /* HomeView.swift in Sources */,
 				DED0F8B725F53E780055ABF3 /* FileService.swift in Sources */,
+				DEA879EA26591E5700FEB11A /* SidebarNavigation.swift in Sources */,
+				DEA879EC26591F4200FEB11A /* IntroView.swift in Sources */,
 				DEC0A3EE25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift in Sources */,
 				DEA879E826591D4900FEB11A /* CheckBitOperations.swift in Sources */,
 				DED0F8BA25F542DF0055ABF3 /* FileServiceProtocol.swift in Sources */,

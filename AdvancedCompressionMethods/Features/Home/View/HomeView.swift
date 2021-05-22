@@ -9,13 +9,10 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        VStack {
-            Button(action: testStuff, label: {
-                Text("Button")
-            })
+        HStack {
+            SidebarNavigation()
+            IntroView()
         }
-        .frame(width: 400, height: 400, alignment: .center)
-        .padding()
     }
 }
 
