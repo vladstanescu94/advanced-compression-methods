@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DEA879E826591D4900FEB11A /* CheckBitOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879E726591D4900FEB11A /* CheckBitOperations.swift */; };
 		DEC0A3EE25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC0A3ED25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift */; };
 		DEC0A3F025F53BCA00E6C565 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC0A3EF25F53BCA00E6C565 /* HomeView.swift */; };
 		DEC0A3F225F53BCB00E6C565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEC0A3F125F53BCB00E6C565 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DEA879E726591D4900FEB11A /* CheckBitOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBitOperations.swift; sourceTree = "<group>"; };
 		DEC0A3EA25F53BCA00E6C565 /* AdvancedCompressionMethods.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdvancedCompressionMethods.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEC0A3ED25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedCompressionMethodsApp.swift; sourceTree = "<group>"; };
 		DEC0A3EF25F53BCA00E6C565 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -42,6 +44,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DEA879E326591CBE00FEB11A /* NearLossless */ = {
+			isa = PBXGroup;
+			children = (
+				DEA879E426591CDB00FEB11A /* View */,
+				DEA879E526591CE200FEB11A /* ViewModel */,
+			);
+			path = NearLossless;
+			sourceTree = "<group>";
+		};
+		DEA879E426591CDB00FEB11A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DEA879E526591CE200FEB11A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DEA879E626591D2500FEB11A /* Extra */ = {
+			isa = PBXGroup;
+			children = (
+				DEA879E726591D4900FEB11A /* CheckBitOperations.swift */,
+			);
+			path = Extra;
+			sourceTree = "<group>";
+		};
 		DEC0A3E125F53BCA00E6C565 = {
 			isa = PBXGroup;
 			children = (
@@ -80,8 +113,10 @@
 			isa = PBXGroup;
 			children = (
 				DEC0A3FF25F53C5200E6C565 /* AppDelegate */,
+				DEA879E626591D2500FEB11A /* Extra */,
 				DED0F8AF25F53D9F0055ABF3 /* FileOperations */,
 				DEC0A40125F53C6B00E6C565 /* Home */,
+				DEA879E326591CBE00FEB11A /* NearLossless */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -107,17 +142,17 @@
 		DEC0A40125F53C6B00E6C565 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				DEC0A40225F53C6F00E6C565 /* Views */,
+				DEC0A40225F53C6F00E6C565 /* View */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		DEC0A40225F53C6F00E6C565 /* Views */ = {
+		DEC0A40225F53C6F00E6C565 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				DEC0A3EF25F53BCA00E6C565 /* HomeView.swift */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		DED0F8AF25F53D9F0055ABF3 /* FileOperations */ = {
@@ -205,6 +240,7 @@
 				DEC0A3F025F53BCA00E6C565 /* HomeView.swift in Sources */,
 				DED0F8B725F53E780055ABF3 /* FileService.swift in Sources */,
 				DEC0A3EE25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift in Sources */,
+				DEA879E826591D4900FEB11A /* CheckBitOperations.swift in Sources */,
 				DED0F8BA25F542DF0055ABF3 /* FileServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

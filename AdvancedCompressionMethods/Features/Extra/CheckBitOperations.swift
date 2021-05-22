@@ -1,23 +1,11 @@
 //
-//  HomeView.swift
+//  CheckBitOperations.swift
 //  AdvancedCompressionMethods
 //
-//  Created by Vlad Stanescu on 07.03.2021.
+//  Created by Vlad Stanescu on 22.05.2021.
 //
 
-import SwiftUI
-
-struct HomeView: View {
-    var body: some View {
-        VStack {
-            Button(action: testStuff, label: {
-                Text("Button")
-            })
-        }
-        .frame(width: 400, height: 400, alignment: .center)
-        .padding()
-    }
-}
+import Foundation
 
 func testStuff() {
     let bitReader = BitReader(fileService: FileService(fileName: "test.txt", fileMode: .read))
@@ -38,10 +26,4 @@ func testStuff() {
         bitWriter.writeNBits(numberOfBits: nb, value: value)
         NBR -= UInt64(nb)
     } while NBR > 0
-}
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
 }
