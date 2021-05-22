@@ -10,6 +10,8 @@
 		DEA879E826591D4900FEB11A /* CheckBitOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879E726591D4900FEB11A /* CheckBitOperations.swift */; };
 		DEA879EA26591E5700FEB11A /* SidebarNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879E926591E5700FEB11A /* SidebarNavigation.swift */; };
 		DEA879EC26591F4200FEB11A /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879EB26591F4200FEB11A /* IntroView.swift */; };
+		DEA879EF2659477400FEB11A /* ConfigConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879EE2659477400FEB11A /* ConfigConstants.swift */; };
+		DEA879F2265950FF00FEB11A /* NearLosslessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879F1265950FF00FEB11A /* NearLosslessView.swift */; };
 		DEC0A3EE25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC0A3ED25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift */; };
 		DEC0A3F025F53BCA00E6C565 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC0A3EF25F53BCA00E6C565 /* HomeView.swift */; };
 		DEC0A3F225F53BCB00E6C565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEC0A3F125F53BCB00E6C565 /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 		DEA879E726591D4900FEB11A /* CheckBitOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBitOperations.swift; sourceTree = "<group>"; };
 		DEA879E926591E5700FEB11A /* SidebarNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarNavigation.swift; sourceTree = "<group>"; };
 		DEA879EB26591F4200FEB11A /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		DEA879EE2659477400FEB11A /* ConfigConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigConstants.swift; sourceTree = "<group>"; };
+		DEA879F1265950FF00FEB11A /* NearLosslessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearLosslessView.swift; sourceTree = "<group>"; };
 		DEC0A3EA25F53BCA00E6C565 /* AdvancedCompressionMethods.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdvancedCompressionMethods.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEC0A3ED25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedCompressionMethodsApp.swift; sourceTree = "<group>"; };
 		DEC0A3EF25F53BCA00E6C565 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -60,6 +64,7 @@
 		DEA879E426591CDB00FEB11A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DEA879F1265950FF00FEB11A /* NearLosslessView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -77,6 +82,22 @@
 				DEA879E726591D4900FEB11A /* CheckBitOperations.swift */,
 			);
 			path = Extra;
+			sourceTree = "<group>";
+		};
+		DEA879ED2659475F00FEB11A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DEA879EE2659477400FEB11A /* ConfigConstants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		DEA879F0265950E500FEB11A /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				DEA879E926591E5700FEB11A /* SidebarNavigation.swift */,
+			);
+			path = Sidebar;
 			sourceTree = "<group>";
 		};
 		DEC0A3E125F53BCA00E6C565 = {
@@ -121,6 +142,7 @@
 				DED0F8AF25F53D9F0055ABF3 /* FileOperations */,
 				DEC0A40125F53C6B00E6C565 /* Home */,
 				DEA879E326591CBE00FEB11A /* NearLossless */,
+				DEA879ED2659475F00FEB11A /* Utils */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -155,8 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				DEC0A3EF25F53BCA00E6C565 /* HomeView.swift */,
-				DEA879E926591E5700FEB11A /* SidebarNavigation.swift */,
 				DEA879EB26591F4200FEB11A /* IntroView.swift */,
+				DEA879F0265950E500FEB11A /* Sidebar */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -244,9 +266,11 @@
 				DED0F8B425F53DB90055ABF3 /* BitReader.swift in Sources */,
 				DED0F8B125F53DB30055ABF3 /* BitWriter.swift in Sources */,
 				DEC0A3F025F53BCA00E6C565 /* HomeView.swift in Sources */,
+				DEA879EF2659477400FEB11A /* ConfigConstants.swift in Sources */,
 				DED0F8B725F53E780055ABF3 /* FileService.swift in Sources */,
 				DEA879EA26591E5700FEB11A /* SidebarNavigation.swift in Sources */,
 				DEA879EC26591F4200FEB11A /* IntroView.swift in Sources */,
+				DEA879F2265950FF00FEB11A /* NearLosslessView.swift in Sources */,
 				DEC0A3EE25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift in Sources */,
 				DEA879E826591D4900FEB11A /* CheckBitOperations.swift in Sources */,
 				DED0F8BA25F542DF0055ABF3 /* FileServiceProtocol.swift in Sources */,

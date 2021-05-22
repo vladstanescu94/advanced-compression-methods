@@ -13,5 +13,8 @@ struct AdvancedCompressionMethodsApp: App {
         WindowGroup {
             HomeView()
         }
+        .commands {
+            SidebarCommands()
+        }
     }
 }
