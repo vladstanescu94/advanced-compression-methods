@@ -7,8 +7,11 @@
 
 import Foundation
 
-class NearLosslessEncoder: ObservableObject {
-    init() { }
+class NearLosslessEncoder {
     
-    public func encode() { }
+    public func encode(imageToEncode: URL?) {
+        guard let imageURL = imageToEncode else { return }
+        
+        print(imageURL.path)
+    }
 }

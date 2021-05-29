@@ -7,8 +7,11 @@
 
 import Foundation
 
-class NearLosslessDecoder: ObservableObject {
-    init() { }
+class NearLosslessDecoder {
     
-    public func decode() { }
+    public func decode(fileToDecode: URL?) {
+        guard let url = fileToDecode else { return }
+        
+        print(url.path)
+    }
 }

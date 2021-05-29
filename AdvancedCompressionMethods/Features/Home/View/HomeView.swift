@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State var selectedItem: Int? = 1
+    
     var body: some View {
         NavigationView {
             SidebarNavigation(selectedItem: $selectedItem)

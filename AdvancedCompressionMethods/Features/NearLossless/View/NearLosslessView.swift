@@ -6,24 +6,29 @@
 //
 
 import SwiftUI
+import Cocoa
 
 struct NearLosslessView: View {
-    @ObservedObject var encoder = NearLosslessEncoder()
-    @ObservedObject var decoder = NearLosslessDecoder()
+    @ObservedObject var viewModel = NearLosslessViewModel()
     
     var body: some View {
         HStack {
-            Button(action: encoder.encode, label: {
-                Text("Encode")
-            })
-            
-            Button(action: decoder.decode, label: {
-                Text("Decode")
-            })
+            VStack {
+                OriginalImageView(viewModel: viewModel)
+                Spacer()
+                NearLosslessControlsView(viewModel: viewModel)
+                    .frame(minWidth: 0,
+                           maxWidth: .infinity,
+                           alignment: .topLeading)
+                
+            }
+            Spacer()
         }
+        .padding([.top, .bottom], 50)
+        .padding([.leading, .trailing], 50)
         .frame(maxWidth: .infinity,
                maxHeight: .infinity,
-               alignment: .center)
+               alignment: .topLeading)
     }
 }
 

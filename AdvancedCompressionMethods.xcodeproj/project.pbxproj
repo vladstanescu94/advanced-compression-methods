@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE7FF7AF26628DFE00F55011 /* OpenPanelMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7AE26628DFE00F55011 /* OpenPanelMethods.swift */; };
+		DE7FF7B12662907300F55011 /* NearLosslessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7B02662907300F55011 /* NearLosslessViewModel.swift */; };
+		DE7FF7B32662924700F55011 /* OriginalImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7B22662924700F55011 /* OriginalImageView.swift */; };
+		DE7FF7B6266299D600F55011 /* PredictorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7B5266299D600F55011 /* PredictorType.swift */; };
+		DE7FF7B826629DCE00F55011 /* ImageSaveMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7B726629DCE00F55011 /* ImageSaveMode.swift */; };
+		DE7FF7BA2662A45800F55011 /* NearLosslessControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7B92662A45800F55011 /* NearLosslessControlsView.swift */; };
 		DEA879E826591D4900FEB11A /* CheckBitOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879E726591D4900FEB11A /* CheckBitOperations.swift */; };
 		DEA879EA26591E5700FEB11A /* SidebarNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879E926591E5700FEB11A /* SidebarNavigation.swift */; };
 		DEA879EC26591F4200FEB11A /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879EB26591F4200FEB11A /* IntroView.swift */; };
@@ -25,6 +31,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DE7FF7AE26628DFE00F55011 /* OpenPanelMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenPanelMethods.swift; sourceTree = "<group>"; };
+		DE7FF7B02662907300F55011 /* NearLosslessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearLosslessViewModel.swift; sourceTree = "<group>"; };
+		DE7FF7B22662924700F55011 /* OriginalImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalImageView.swift; sourceTree = "<group>"; };
+		DE7FF7B5266299D600F55011 /* PredictorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictorType.swift; sourceTree = "<group>"; };
+		DE7FF7B726629DCE00F55011 /* ImageSaveMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaveMode.swift; sourceTree = "<group>"; };
+		DE7FF7B92662A45800F55011 /* NearLosslessControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearLosslessControlsView.swift; sourceTree = "<group>"; };
 		DEA879E726591D4900FEB11A /* CheckBitOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBitOperations.swift; sourceTree = "<group>"; };
 		DEA879E926591E5700FEB11A /* SidebarNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarNavigation.swift; sourceTree = "<group>"; };
 		DEA879EB26591F4200FEB11A /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
@@ -56,11 +68,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE7FF7B4266299A100F55011 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE7FF7B5266299D600F55011 /* PredictorType.swift */,
+				DE7FF7B726629DCE00F55011 /* ImageSaveMode.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		DEA879E326591CBE00FEB11A /* NearLossless */ = {
 			isa = PBXGroup;
 			children = (
 				DEA879F42659579300FEB11A /* Decoder */,
 				DEA879F32659578B00FEB11A /* Encoder */,
+				DE7FF7B4266299A100F55011 /* Model */,
 				DEA879E426591CDB00FEB11A /* View */,
 				DEA879E526591CE200FEB11A /* ViewModel */,
 			);
@@ -71,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				DEA879F1265950FF00FEB11A /* NearLosslessView.swift */,
+				DE7FF7B22662924700F55011 /* OriginalImageView.swift */,
+				DE7FF7B92662A45800F55011 /* NearLosslessControlsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -78,6 +102,7 @@
 		DEA879E526591CE200FEB11A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				DE7FF7B02662907300F55011 /* NearLosslessViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -212,6 +237,7 @@
 				DED0F8B025F53DB30055ABF3 /* BitWriter.swift */,
 				DED0F8B625F53E780055ABF3 /* FileService.swift */,
 				DED0F8B925F542DF0055ABF3 /* FileServiceProtocol.swift */,
+				DE7FF7AE26628DFE00F55011 /* OpenPanelMethods.swift */,
 			);
 			path = FileOperations;
 			sourceTree = "<group>";
@@ -285,10 +311,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE7FF7B6266299D600F55011 /* PredictorType.swift in Sources */,
+				DE7FF7B826629DCE00F55011 /* ImageSaveMode.swift in Sources */,
 				DED0F8B425F53DB90055ABF3 /* BitReader.swift in Sources */,
+				DE7FF7AF26628DFE00F55011 /* OpenPanelMethods.swift in Sources */,
 				DED0F8B125F53DB30055ABF3 /* BitWriter.swift in Sources */,
 				DEC0A3F025F53BCA00E6C565 /* HomeView.swift in Sources */,
 				DEA879EF2659477400FEB11A /* ConfigConstants.swift in Sources */,
+				DE7FF7BA2662A45800F55011 /* NearLosslessControlsView.swift in Sources */,
+				DE7FF7B32662924700F55011 /* OriginalImageView.swift in Sources */,
+				DE7FF7B12662907300F55011 /* NearLosslessViewModel.swift in Sources */,
 				DEA879F82659580D00FEB11A /* NearLosslessDecoder.swift in Sources */,
 				DED0F8B725F53E780055ABF3 /* FileService.swift in Sources */,
 				DEA879EA26591E5700FEB11A /* SidebarNavigation.swift in Sources */,
