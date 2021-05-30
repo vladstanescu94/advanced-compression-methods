@@ -14,7 +14,13 @@ struct NearLosslessView: View {
     var body: some View {
         HStack {
             VStack {
-                OriginalImageView(viewModel: viewModel)
+                HStack {
+                    Spacer()
+                    OriginalImageView(viewModel: viewModel)
+                    Spacer()
+                    DecodedImageView(viewModel: viewModel)
+                    Spacer()
+                }
                 Spacer()
                 NearLosslessControlsView(viewModel: viewModel)
                     .frame(minWidth: 0,

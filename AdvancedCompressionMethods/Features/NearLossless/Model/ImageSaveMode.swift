@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum ImageSaveMode {
-    case fix
-    case jpegTable
-    case arithmetic
+enum ImageSaveMode: Int {
+    case fix = 0
+    case jpegTable = 1
+    case arithmetic = 2
 }

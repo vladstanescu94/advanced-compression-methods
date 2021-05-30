@@ -11,12 +11,19 @@ import Cocoa
 class NearLosslessViewModel: ObservableObject {
     @Published var originalImageURL: URL? = nil
     @Published var encodedFileURL: URL? = nil
+    @Published var decodedImageURL: URL? = nil
     @Published var selectedPredictorType: PredictorType = .predictor0
     @Published var selectedSaveMode: ImageSaveMode = .fix
     @Published var acceptedError: Int = 0
     
     var originalImage: NSImage? {
         guard let imageURL = originalImageURL else { return nil }
+        
+        return NSImage(contentsOf: imageURL)
+    }
+    
+    var decodedImage: NSImage? {
+        guard let imageURL = decodedImageURL else { return nil}
         
         return NSImage(contentsOf: imageURL)
     }
@@ -41,7 +48,9 @@ class NearLosslessViewModel: ObservableObject {
                                     FileService(
                                         fileName: encodedFileName,
                                         fileMode: .write))
-        let encoder = NearLosslessEncoder(bitReader: bitReader, bitWriter: bitWriter)
+        
+        let options = EncodingOptions(predictorType: selectedPredictorType, saveMode: selectedSaveMode, acceptedError: acceptedError)
+        let encoder = NearLosslessEncoder(bitReader: bitReader, bitWriter: bitWriter, encodingOptions: options)
         encoder.encode()
     }
     
@@ -74,6 +83,7 @@ class NearLosslessViewModel: ObservableObject {
                                     FileService(
                                         fileName: "decoded.bmp",
                                         fileMode: .write))
+        
         let decoder = NearLosslessDecoder(bitReader: bitReader, bitWriter: bitWriter)
         decoder.decode()
     }
