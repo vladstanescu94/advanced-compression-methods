@@ -10,23 +10,16 @@ import Foundation
 struct ValuePredictor {
     let predictorType: PredictorType
     
-    var values: [UInt8]
-    var a: UInt8 {
-        values[0]
-    }
-    var b: UInt8 {
-        values[1]
-    }
-    var c: UInt8 {
-        values[2]
-    }
     
-    init(predictorType: PredictorType, values: [UInt8]) {
+    init(predictorType: PredictorType) {
         self.predictorType = predictorType
-        self.values = values
     }
     
-    public func predict() -> UInt8 {
+    public func predict(values: [UInt8]) -> UInt8 {
+        let a = values[0]
+        let b = values[1]
+        let c = values[2]
+        
         switch predictorType {
         case .predictor0:
             return 128
@@ -37,19 +30,23 @@ struct ValuePredictor {
         case .predictor3:
             return c
         case .predictor4:
-            return a + b - c
+            let result = Int(a) + Int(b) - Int(c)
+            return result.toByte()
         case .predictor5:
-            return a + (b - c) / 2
+            let result = Int(a) + (Int(b) - Int(c)) / 2
+            return result.toByte()
         case .predictor6:
-            return b + (a - c) / 2
+            let result = Int(b) + (Int(a) - Int(c)) / 2
+            return result.toByte()
         case .predictor7:
-            return (a + b) / 2
+            let result = (Int(a) + Int(b)) / 2
+            return result.toByte()
         case .predictor8:
-            return jpegLS()
+            return jpegLS(a: a, b: b, c: c)
         }
     }
     
-    private func jpegLS() -> UInt8 {
+    private func jpegLS(a: UInt8, b: UInt8, c:UInt8) -> UInt8 {
         if c >= max(a, b) {
             return min(a, b)
         }
@@ -57,7 +54,7 @@ struct ValuePredictor {
         if c <= min(a, b) {
             return max(a, b)
         }
-        
-        return a + b - c
+        let result =  Int(a) + Int(b) - Int(c)
+        return result.toByte()
     }
 }

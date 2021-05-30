@@ -55,6 +55,22 @@ class BitReader {
         buffer = 0
     }
     
+    public func getFileByteData() -> [UInt8]? {
+        guard let service = self.fileService as? PopupFileService else { return nil }
+        
+        var bytes = [UInt8]()
+        
+        var NBR = 8 * service.fileSize
+        
+        repeat {
+            guard let value = self.ReadNBits(numberOfBits: 8) else { return nil }
+            bytes.append(UInt8(value))
+            NBR -= UInt64(8)
+        } while NBR > 0
+        
+        return bytes
+    }
+    
     // MARK: - Cleanup
     
     deinit {

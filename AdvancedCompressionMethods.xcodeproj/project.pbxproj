@@ -18,6 +18,8 @@
 		DE7FF7C32663B68400F55011 /* NearLosslessMatrices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7C22663B68400F55011 /* NearLosslessMatrices.swift */; };
 		DE7FF7C52663BD8200F55011 /* EncodingOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7C42663BD8200F55011 /* EncodingOptions.swift */; };
 		DE7FF7C72663C10600F55011 /* DecodedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7C62663C10600F55011 /* DecodedImageView.swift */; };
+		DE7FF7C9266412BD00F55011 /* Quantize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7C8266412BD00F55011 /* Quantize.swift */; };
+		DE7FF7CC26641B8800F55011 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7CB26641B8800F55011 /* Int+Extensions.swift */; };
 		DEA879E826591D4900FEB11A /* CheckBitOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879E726591D4900FEB11A /* CheckBitOperations.swift */; };
 		DEA879EA26591E5700FEB11A /* SidebarNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879E926591E5700FEB11A /* SidebarNavigation.swift */; };
 		DEA879EC26591F4200FEB11A /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879EB26591F4200FEB11A /* IntroView.swift */; };
@@ -47,6 +49,8 @@
 		DE7FF7C22663B68400F55011 /* NearLosslessMatrices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearLosslessMatrices.swift; sourceTree = "<group>"; };
 		DE7FF7C42663BD8200F55011 /* EncodingOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingOptions.swift; sourceTree = "<group>"; };
 		DE7FF7C62663C10600F55011 /* DecodedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedImageView.swift; sourceTree = "<group>"; };
+		DE7FF7C8266412BD00F55011 /* Quantize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quantize.swift; sourceTree = "<group>"; };
+		DE7FF7CB26641B8800F55011 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		DEA879E726591D4900FEB11A /* CheckBitOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBitOperations.swift; sourceTree = "<group>"; };
 		DEA879E926591E5700FEB11A /* SidebarNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarNavigation.swift; sourceTree = "<group>"; };
 		DEA879EB26591F4200FEB11A /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
@@ -97,6 +101,14 @@
 			path = Predictor;
 			sourceTree = "<group>";
 		};
+		DE7FF7CA26641B7600F55011 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DE7FF7CB26641B8800F55011 /* Int+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		DEA879E326591CBE00FEB11A /* NearLossless */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				DEA879EE2659477400FEB11A /* ConfigConstants.swift */,
+				DE7FF7C8266412BD00F55011 /* Quantize.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -207,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				DEC0A3FF25F53C5200E6C565 /* AppDelegate */,
+				DE7FF7CA26641B7600F55011 /* Extensions */,
 				DEA879E626591D2500FEB11A /* Extra */,
 				DED0F8AF25F53D9F0055ABF3 /* FileOperations */,
 				DEC0A40125F53C6B00E6C565 /* Home */,
@@ -338,6 +352,7 @@
 				DE7FF7B826629DCE00F55011 /* ImageSaveMode.swift in Sources */,
 				DE7FF7C52663BD8200F55011 /* EncodingOptions.swift in Sources */,
 				DED0F8B425F53DB90055ABF3 /* BitReader.swift in Sources */,
+				DE7FF7CC26641B8800F55011 /* Int+Extensions.swift in Sources */,
 				DE7FF7AF26628DFE00F55011 /* OpenPanelMethods.swift in Sources */,
 				DED0F8B125F53DB30055ABF3 /* BitWriter.swift in Sources */,
 				DEC0A3F025F53BCA00E6C565 /* HomeView.swift in Sources */,
@@ -346,6 +361,7 @@
 				DE7FF7B32662924700F55011 /* OriginalImageView.swift in Sources */,
 				DE7FF7B12662907300F55011 /* NearLosslessViewModel.swift in Sources */,
 				DEA879F82659580D00FEB11A /* NearLosslessDecoder.swift in Sources */,
+				DE7FF7C9266412BD00F55011 /* Quantize.swift in Sources */,
 				DED0F8B725F53E780055ABF3 /* FileService.swift in Sources */,
 				DEA879EA26591E5700FEB11A /* SidebarNavigation.swift in Sources */,
 				DEA879F6265957FB00FEB11A /* NearLosslessEncoder.swift in Sources */,
