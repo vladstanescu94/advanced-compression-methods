@@ -8,10 +8,13 @@
 import Foundation
 
 class NearLosslessDecoder {
+    let bitReader: BitReader
+    let bitWriter: BitWriter
     
-    public func decode(fileToDecode: URL?) {
-        guard let url = fileToDecode else { return }
-        
-        print(url.path)
+    init(bitReader: BitReader, bitWriter: BitWriter) {
+        self.bitReader = bitReader
+        self.bitWriter = bitWriter
     }
+    
+    public func decode() {}
 }

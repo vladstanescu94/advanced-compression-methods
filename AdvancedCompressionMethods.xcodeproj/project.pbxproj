@@ -13,6 +13,7 @@
 		DE7FF7B6266299D600F55011 /* PredictorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7B5266299D600F55011 /* PredictorType.swift */; };
 		DE7FF7B826629DCE00F55011 /* ImageSaveMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7B726629DCE00F55011 /* ImageSaveMode.swift */; };
 		DE7FF7BA2662A45800F55011 /* NearLosslessControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7B92662A45800F55011 /* NearLosslessControlsView.swift */; };
+		DE7FF7BC2663A88B00F55011 /* PopupFileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7BB2663A88B00F55011 /* PopupFileService.swift */; };
 		DEA879E826591D4900FEB11A /* CheckBitOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879E726591D4900FEB11A /* CheckBitOperations.swift */; };
 		DEA879EA26591E5700FEB11A /* SidebarNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879E926591E5700FEB11A /* SidebarNavigation.swift */; };
 		DEA879EC26591F4200FEB11A /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879EB26591F4200FEB11A /* IntroView.swift */; };
@@ -37,6 +38,7 @@
 		DE7FF7B5266299D600F55011 /* PredictorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictorType.swift; sourceTree = "<group>"; };
 		DE7FF7B726629DCE00F55011 /* ImageSaveMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaveMode.swift; sourceTree = "<group>"; };
 		DE7FF7B92662A45800F55011 /* NearLosslessControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearLosslessControlsView.swift; sourceTree = "<group>"; };
+		DE7FF7BB2663A88B00F55011 /* PopupFileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupFileService.swift; sourceTree = "<group>"; };
 		DEA879E726591D4900FEB11A /* CheckBitOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBitOperations.swift; sourceTree = "<group>"; };
 		DEA879E926591E5700FEB11A /* SidebarNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarNavigation.swift; sourceTree = "<group>"; };
 		DEA879EB26591F4200FEB11A /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				DED0F8B625F53E780055ABF3 /* FileService.swift */,
 				DED0F8B925F542DF0055ABF3 /* FileServiceProtocol.swift */,
 				DE7FF7AE26628DFE00F55011 /* OpenPanelMethods.swift */,
+				DE7FF7BB2663A88B00F55011 /* PopupFileService.swift */,
 			);
 			path = FileOperations;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				DEA879F2265950FF00FEB11A /* NearLosslessView.swift in Sources */,
 				DEC0A3EE25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift in Sources */,
 				DEA879E826591D4900FEB11A /* CheckBitOperations.swift in Sources */,
+				DE7FF7BC2663A88B00F55011 /* PopupFileService.swift in Sources */,
 				DED0F8BA25F542DF0055ABF3 /* FileServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

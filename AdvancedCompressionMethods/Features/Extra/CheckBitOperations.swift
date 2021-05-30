@@ -7,11 +7,8 @@
 
 import Foundation
 
-func testStuff() {
-    let bitReader = BitReader(fileService: FileService(fileName: "test.txt", fileMode: .read))
-    let bitWriter = BitWriter(fileService: FileService(fileName: "test2.txt", fileMode: .write))
-    
-    guard let service = bitReader.fileService as? FileService else { return }
+func testStuff(bitReader: BitReader, bitWriter: BitWriter) {    
+    guard let service = bitReader.fileService as? PopupFileService else { return }
     
     var NBR = 8 * service.fileSize
     

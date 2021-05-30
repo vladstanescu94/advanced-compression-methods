@@ -31,7 +31,7 @@ struct OriginalImageView: View {
                     Text("Load image")
                 })
                 Button(action: {
-                    viewModel.encoder.encode(imageToEncode: viewModel.originalImageURL)
+                    viewModel.encode()
                 }, label: {
                     Text("Encode")
                 })

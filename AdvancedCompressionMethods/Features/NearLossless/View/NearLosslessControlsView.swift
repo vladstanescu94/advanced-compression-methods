@@ -37,23 +37,11 @@ struct NearLosslessControlsView: View {
                     Text("Arithmetic").tag(ImageSaveMode.arithmetic)
                 })
                 .frame(maxWidth: 300)
-            }
-            VStack {
                 Picker(selection: $viewModel.acceptedError, label: Text("Accepted Error:"), content: {
                     ForEach(0...10, id: \.self) {
                         Text("\($0)")
                     }
                 })
-                .frame(maxWidth: 300)
-                HStack {
-                    Text("Domain Min Value:")
-                    TextField("Domain Min Value", value: $viewModel.domainMinValue, formatter: formatter)
-                }
-                .frame(maxWidth: 300)
-                HStack {
-                    Text("Domain Max Value:")
-                    TextField("Domain Max Value", value: $viewModel.domainMaxValue, formatter: formatter)
-                }
                 .frame(maxWidth: 300)
             }
         }

@@ -8,10 +8,18 @@
 import Foundation
 
 class NearLosslessEncoder {
+    let bitReader: BitReader
+    let bitWriter: BitWriter
     
-    public func encode(imageToEncode: URL?) {
-        guard let imageURL = imageToEncode else { return }
-        
-        print(imageURL.path)
+    init(bitReader: BitReader, bitWriter: BitWriter) {
+        self.bitReader = bitReader
+        self.bitWriter = bitWriter
+    }
+    
+    public func encode() {
+        DispatchQueue.main.async {
+            testStuff(bitReader: self.bitReader, bitWriter: self.bitWriter)
+            print("Done")
+        }
     }
 }
