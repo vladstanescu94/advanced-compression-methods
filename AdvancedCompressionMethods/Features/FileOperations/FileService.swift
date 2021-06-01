@@ -26,6 +26,7 @@ class FileService: FileServiceProtocol {
     public let fileManager = FileManager.default
     public var fileHandle: FileHandle? = nil
     public var fileSize:UInt64 = 0
+    public var fileURL: URL? = nil
     
     public init(fileName: String, fileMode: FileMode) {
         self.fileName = fileName
@@ -39,6 +40,7 @@ class FileService: FileServiceProtocol {
         if let fileURL = directory?.appendingPathComponent(fileName) {
             createFile(path: fileURL.path)
             getFileSize(path: fileURL.path)
+            self.fileURL = fileURL
             
             do {
                 try self.createFileHandle(fileURL: fileURL)

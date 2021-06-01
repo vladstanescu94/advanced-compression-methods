@@ -75,17 +75,20 @@ class NearLosslessViewModel: ObservableObject {
     func decode() {
         guard let fileToDecode = encodedFileURL else { return }
         
+        let decodedFileName = fileToDecode.lastPathComponent
+        
         let bitReader = BitReader(fileService:
                                     PopupFileService(
                                         fileURL: fileToDecode,
                                         fileMode: .read))
         let bitWriter = BitWriter(fileService:
                                     FileService(
-                                        fileName: "decoded.bmp",
+                                        fileName: "\(decodedFileName).bmp",
                                         fileMode: .write))
         
         let decoder = NearLosslessDecoder(bitReader: bitReader, bitWriter: bitWriter)
         decoder.decode()
+        decodedImageURL = decoder.decodedFileURL
     }
     
 }

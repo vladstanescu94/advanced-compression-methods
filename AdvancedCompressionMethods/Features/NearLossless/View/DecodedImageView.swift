@@ -26,6 +26,7 @@ struct DecodedImageView: View {
                 Button(action: {
                     openFileFromPanel(allowedExtensions: ["prd"]) { url in
                         viewModel.encodedFileURL = url
+                        viewModel.decodedImageURL = nil
                     }
                 }, label: {
                     Text("Load encoded file")
