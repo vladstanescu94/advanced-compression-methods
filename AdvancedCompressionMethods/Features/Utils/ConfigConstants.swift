@@ -12,3 +12,7 @@ enum WindowSize: CGFloat {
     case width = 1440
     case height = 720
 }
+
+enum BmpConstants: Int {
+    case headerSize = 1078
+}

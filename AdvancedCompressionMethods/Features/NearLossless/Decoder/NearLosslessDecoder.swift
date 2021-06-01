@@ -32,7 +32,7 @@ final class NearLosslessDecoder {
     }
     
     private func copyHeader() {
-        for _ in 0..<1078 {
+        for _ in 0..<BmpConstants.headerSize.rawValue {
             if let byte = bitReader.ReadNBits(numberOfBits: 8) {
                 bitWriter.writeNBits(numberOfBits: 8, value: UInt32(byte))
             }
@@ -70,10 +70,11 @@ final class NearLosslessDecoder {
     }
     
     private func readFixedMatrix() -> [[Int]] {
-        var matrix = Array(repeating: Array(repeating: 0, count: 256), count: 256)
+        let matrixSize = 256
+        var matrix = Array(repeating: Array(repeating: 0, count: matrixSize), count: matrixSize)
         
-        for i in 0..<256 {
-            for j in 0..<256 {
+        for i in 0..<matrixSize {
+            for j in 0..<matrixSize {
                 let signBit = bitReader.ReadBit()
                 let isNegative = signBit == 1 ? true : false
                 
@@ -88,10 +89,11 @@ final class NearLosslessDecoder {
     }
     
     private func readJpegTableMatrix() -> [[Int]] {
-        var matrix = Array(repeating: Array(repeating: 0, count: 256), count: 256)
+        let matrixSize = 256
+        var matrix = Array(repeating: Array(repeating: 0, count: matrixSize), count: matrixSize)
         
-        for i in 0..<256 {
-            for j in 0..<256 {
+        for i in 0..<matrixSize {
+            for j in 0..<matrixSize {
                 if let numberToWrite = getJpegNumber() {
                     matrix[i][j] = numberToWrite
                 }
@@ -140,8 +142,8 @@ final class NearLosslessDecoder {
     }
     
     private func writePixelData(from matrix: [[UInt8]]) {
-        for row in stride(from: 255, through: 0, by: -1){
-            for column in 0..<256 {
+        for row in stride(from: matrix[0].count - 1, through: 0, by: -1){
+            for column in 0..<matrix[0].count {
                 bitWriter.writeNBits(numberOfBits: 8, value: UInt32(matrix[column][row]))
             }
         }

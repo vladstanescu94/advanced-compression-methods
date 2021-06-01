@@ -37,9 +37,9 @@ class NearLosslessEncoder {
     }
     
     private func writeBMPHeader(from bytes: [UInt8]) {
-        guard bytes.count > 1078 else { return }
+        guard bytes.count > BmpConstants.headerSize.rawValue else { return }
         
-        for i in 0..<1078 {
+        for i in 0..<BmpConstants.headerSize.rawValue {
             let byte = bytes[i]
             bitWriter.writeNBits(numberOfBits: 8, value: UInt32(byte))
         }
