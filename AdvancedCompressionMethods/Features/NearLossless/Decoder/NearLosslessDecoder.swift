@@ -11,6 +11,7 @@ final class NearLosslessDecoder {
     let bitReader: BitReader
     let bitWriter: BitWriter
     var decodedFileURL: URL? = nil
+    var decodingMatrices: NearLosslessMatrices? = nil
     
     init(bitReader: BitReader, bitWriter: BitWriter) {
         self.bitReader = bitReader
@@ -21,8 +22,12 @@ final class NearLosslessDecoder {
         copyHeader()
         if let options = getOptions() {
             let errorMatrix = readErrorMatrix(saveMode: options.saveMode)
-            let codesMatrix = getCodes(from: errorMatrix, with: options)
-            writePixelData(from: codesMatrix)
+            decodingMatrices = getCodes(from: errorMatrix, with: options)
+            
+            if let matrices = decodingMatrices {
+                writePixelData(from: matrices.decoded)
+            }
+            
             if let service = bitWriter.fileService as? FileService {
                 if let decodedURL =  service.fileURL {
                     self.decodedFileURL = decodedURL
@@ -132,19 +137,19 @@ final class NearLosslessDecoder {
         return bitsToRead
     }
     
-    private func getCodes(from errors: [[Int]], with options: EncodingOptions) -> [[UInt8]] {
+    private func getCodes(from errors: [[Int]], with options: EncodingOptions) -> NearLosslessMatrices {
         let predictor = ValuePredictor(predictorType: options.predictorType)
         var matrices = NearLosslessMatrices(width: errors[0].count, height: errors[0].count, isDecoding: true)
         matrices.quantizedErrors = errors
         matrices.predictMatrices(with: predictor, acceptedError: options.acceptedError)
         
-        return matrices.decoded
+        return matrices
     }
     
     private func writePixelData(from matrix: [[UInt8]]) {
-        for row in stride(from: matrix[0].count - 1, through: 0, by: -1){
-            for column in 0..<matrix[0].count {
-                bitWriter.writeNBits(numberOfBits: 8, value: UInt32(matrix[column][row]))
+        for i in stride(from: matrix[0].count - 1, through: 0, by: -1){
+            for j in 0..<matrix[0].count {
+                bitWriter.writeNBits(numberOfBits: 8, value: UInt32(matrix[j][i]))
             }
         }
     }

@@ -10,7 +10,7 @@ import CoreGraphics
 
 enum WindowSize: CGFloat {
     case width = 1440
-    case height = 720
+    case height = 900
 }
 
 enum BmpConstants: Int {

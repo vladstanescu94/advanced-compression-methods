@@ -7,14 +7,24 @@
 
 import Foundation
 import Cocoa
+import Charts
 
-class NearLosslessViewModel: ObservableObject {
+final class NearLosslessViewModel: ObservableObject {
     @Published var originalImageURL: URL? = nil
+    @Published var originalImagePixels: [[UInt8]]? = nil
     @Published var encodedFileURL: URL? = nil
     @Published var decodedImageURL: URL? = nil
     @Published var selectedPredictorType: PredictorType = .predictor0
     @Published var selectedSaveMode: ImageSaveMode = .fix
     @Published var acceptedError: Int = 0
+    @Published var decodingMatrices: NearLosslessMatrices? = nil
+    @Published var errorScale: Double = 0.10
+    @Published var errorMatrixImage: NSImage? = nil
+    @Published var selectedHistogramSource: Int = 0
+    @Published var histogramScale: Double = 1.0
+    @Published var histogramData: [BarChartDataEntry]? = nil
+    
+    private var freqDict: [Int:Int] = [:]
     
     var originalImage: NSImage? {
         guard let imageURL = originalImageURL else { return nil }
@@ -52,6 +62,7 @@ class NearLosslessViewModel: ObservableObject {
         let options = EncodingOptions(predictorType: selectedPredictorType, saveMode: selectedSaveMode, acceptedError: acceptedError)
         let encoder = NearLosslessEncoder(bitReader: bitReader, bitWriter: bitWriter, encodingOptions: options)
         encoder.encode()
+        originalImagePixels = encoder.originalImagePixelData
     }
     
     private func generateFileName() -> String {
@@ -89,6 +100,74 @@ class NearLosslessViewModel: ObservableObject {
         let decoder = NearLosslessDecoder(bitReader: bitReader, bitWriter: bitWriter)
         decoder.decode()
         decodedImageURL = decoder.decodedFileURL
+        decodingMatrices = decoder.decodingMatrices
+    }
+    
+    func generateErrorMatrixImage() {
+        guard let matrices = decodingMatrices else { return }
+        var pixelData: [UInt8] = [UInt8]()
+        let width = 256
+        let height = 256
+        
+        for i in 0..<width{
+            for j in 0..<height {
+                let pixel = abs(128.0 + Double(matrices.errors[j][i]) * errorScale).toByte()
+                pixelData.append(pixel)
+            }
+        }
+        
+        let colorSpace = CGColorSpaceCreateDeviceGray()
+        let pointer = UnsafeMutablePointer(mutating: pixelData)
+        let context = CGContext(data: pointer, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width, space: colorSpace, bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue).rawValue)
+    
+        errorMatrixImage = context!.makeImage().flatMap { NSImage(cgImage: $0, size: NSSize(width: width, height: height)) }
+    }
+    
+    func generateHistogramData() {
+        generateFrequences()
+        histogramData = nil
+        
+        let indexes = Array(-255..<256)
+        let labels = indexes.map { String($0) }
+        
+        var points: [BarChartDataEntry] = []
+
+        for i in indexes.indices {
+            let label = labels[i]
+            let value = Double(freqDict[indexes[i]]!) * histogramScale
+            points.append(BarChartDataEntry(x: Double(i), y: value))
+        }
+    
+        histogramData = points
+    }
+    
+    private func generateFrequences() {
+        guard let originalPixels = originalImagePixels,
+              let decodedMatrices = decodingMatrices else { return }
+        
+        switch selectedHistogramSource {
+        case 0:
+            getFrequency(from: originalPixels)
+        case 1:
+            getFrequency(from: decodedMatrices.dequantizedErrors)
+        case 2:
+            getFrequency(from: decodedMatrices.decoded)
+        default:
+            getFrequency(from: originalPixels)
+        }
+    }
+    
+    private func getFrequency<T: BinaryInteger>(from matrix: [[T]]) {
+        for i in -255..<256 {
+            freqDict[i] = 0
+        }
+        
+        for i in 0..<256 {
+            for j in 0..<256 {
+                let value = matrix[i][j]
+                freqDict[Int(value)]! += 1
+            }
+        }
     }
     
 }

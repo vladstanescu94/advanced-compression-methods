@@ -32,7 +32,9 @@ struct DecodedImageView: View {
                     Text("Load encoded file")
                 })
                 Button(action: {
-                    viewModel.decode()
+                    DispatchQueue.main.async {
+                        viewModel.decode()
+                    }
                 }, label: {
                     Text("Decode")
                 })

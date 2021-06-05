@@ -15,7 +15,7 @@ struct NearLosslessControlsView: View {
         formatter.numberStyle = .decimal
         return formatter
     }
-    
+
     var body: some View {
         HStack(spacing: 100) {
             VStack {
@@ -43,7 +43,36 @@ struct NearLosslessControlsView: View {
                     }
                 })
                 .frame(maxWidth: 300)
+                Slider(value: $viewModel.errorScale, in: 0...1){
+                    Text("Error Scale \(viewModel.errorScale, specifier: "%.2f")")
+                }
+                .frame(maxWidth: 300)
             }
+            VStack(alignment: .trailing) {
+                Picker(selection: $viewModel.selectedHistogramSource, label: Text("Histogram Input:"), content: {
+                    Text("Original").tag(0)
+                    Text("Error Prediction").tag(1)
+                    Text("Decoded").tag(2)
+                })
+                .frame(maxWidth: 300)
+                Slider(value: $viewModel.histogramScale, in: 0...2){
+                    Text("Histogram Scale \(viewModel.histogramScale, specifier: "%.2f")")
+                }
+                .frame(maxWidth: 300)
+                
+                Button {
+                    viewModel.histogramData = nil
+                    viewModel.generateHistogramData()
+                    
+                } label: {
+                    Text("Show Histogram")
+                }
+            }
+            
+            if let histData = viewModel.histogramData {
+                HistogramView(entries: histData)
+            }
+
         }
         .padding()
     }

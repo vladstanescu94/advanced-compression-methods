@@ -20,6 +20,8 @@ struct NearLosslessView: View {
                     Spacer()
                     DecodedImageView(viewModel: viewModel)
                     Spacer()
+                    ErrorMatrixView(viewModel: viewModel)
+                    Spacer()
                 }
                 Spacer()
                 NearLosslessControlsView(viewModel: viewModel)
@@ -35,11 +37,5 @@ struct NearLosslessView: View {
         .frame(maxWidth: .infinity,
                maxHeight: .infinity,
                alignment: .topLeading)
-    }
-}
-
-struct NearLosslessView_Previews: PreviewProvider {
-    static var previews: some View {
-        NearLosslessView()
     }
 }

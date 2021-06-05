@@ -12,6 +12,7 @@ class NearLosslessEncoder {
     let bitReader: BitReader
     let bitWriter: BitWriter
     let encodingOptions: EncodingOptions
+    var originalImagePixelData: [[UInt8]]? = nil
     
     init(bitReader: BitReader, bitWriter: BitWriter, encodingOptions: EncodingOptions) {
         self.bitReader = bitReader
@@ -25,6 +26,7 @@ class NearLosslessEncoder {
         
         if let imageRep = NSBitmapImageRep(data: imageData) {
             var imageMatrices = NearLosslessMatrices(image: imageRep)
+            originalImagePixelData = imageMatrices.pixelValues
             let predictor = ValuePredictor(predictorType: encodingOptions.predictorType)
             
             imageMatrices.predictMatrices(with: predictor, acceptedError: encodingOptions.acceptedError)
