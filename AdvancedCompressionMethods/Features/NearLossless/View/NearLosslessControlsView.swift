@@ -52,10 +52,11 @@ struct NearLosslessControlsView: View {
                 Picker(selection: $viewModel.selectedHistogramSource, label: Text("Histogram Input:"), content: {
                     Text("Original").tag(0)
                     Text("Error Prediction").tag(1)
-                    Text("Decoded").tag(2)
+                    Text("Error Prediction Quantized").tag(2)
+                    Text("Decoded").tag(3)
                 })
                 .frame(maxWidth: 300)
-                Slider(value: $viewModel.histogramScale, in: 0...2){
+                Slider(value: $viewModel.histogramScale, in: 0...1){
                     Text("Histogram Scale \(viewModel.histogramScale, specifier: "%.2f")")
                 }
                 .frame(maxWidth: 300)
@@ -66,6 +67,23 @@ struct NearLosslessControlsView: View {
                     
                 } label: {
                     Text("Show Histogram")
+                }
+                
+                Group {
+                    VStack(alignment: .leading) {
+                        Button {
+                            viewModel.computeMinMaxError()
+                        } label: {
+                            Text("Compute Error")
+                        }
+                        
+                        if let min = viewModel.minimumError,
+                           let max = viewModel.maximumError {
+                            Text("Minimum error \(min)")
+                            Text("Maximum error \(max)")
+                        }
+                        
+                    }
                 }
             }
             

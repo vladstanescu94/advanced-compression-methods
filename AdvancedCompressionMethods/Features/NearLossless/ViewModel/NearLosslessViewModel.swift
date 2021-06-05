@@ -23,6 +23,8 @@ final class NearLosslessViewModel: ObservableObject {
     @Published var selectedHistogramSource: Int = 0
     @Published var histogramScale: Double = 1.0
     @Published var histogramData: [BarChartDataEntry]? = nil
+    @Published var minimumError: Int? = nil
+    @Published var maximumError: Int? = nil
     
     private var freqDict: [Int:Int] = [:]
     
@@ -43,6 +45,8 @@ final class NearLosslessViewModel: ObservableObject {
         
         return NSImage(contentsOf: imageURL)
     }
+    
+    // MARK: - Encode
     
     func encode() {
         guard let imageToEncodeURL = originalImageURL else { return }
@@ -82,6 +86,8 @@ final class NearLosslessViewModel: ObservableObject {
         let encodedFileName = "\(fileName).p\(predictorType)k\(acceptedError)\(fileSaveMode).prd"
         return encodedFileName
     }
+    
+    // MARK: - Decode
     
     func decode() {
         guard let fileToDecode = encodedFileURL else { return }
@@ -128,14 +134,12 @@ final class NearLosslessViewModel: ObservableObject {
         histogramData = nil
         
         let indexes = Array(-255..<256)
-        let labels = indexes.map { String($0) }
         
         var points: [BarChartDataEntry] = []
 
         for i in indexes.indices {
-            let label = labels[i]
             let value = Double(freqDict[indexes[i]]!) * histogramScale
-            points.append(BarChartDataEntry(x: Double(i), y: value))
+            points.append(BarChartDataEntry(x: Double(indexes[i]), y: value))
         }
     
         histogramData = points
@@ -151,6 +155,8 @@ final class NearLosslessViewModel: ObservableObject {
         case 1:
             getFrequency(from: decodedMatrices.dequantizedErrors)
         case 2:
+            getFrequency(from: decodedMatrices.quantizedErrors)
+        case 3:
             getFrequency(from: decodedMatrices.decoded)
         default:
             getFrequency(from: originalPixels)
@@ -168,6 +174,23 @@ final class NearLosslessViewModel: ObservableObject {
                 freqDict[Int(value)]! += 1
             }
         }
+    }
+    
+    func computeMinMaxError() {
+        guard let original = originalImagePixels,
+              let decoded = decodingMatrices?.decoded else { return }
+        
+        var errors:[Int]  = []
+        
+        for i in 0..<256 {
+            for j in 0..<256 {
+                let error = Int(original[i][j]) - Int(decoded[i][j])
+                errors.append(error)
+            }
+        }
+        
+        minimumError = errors.min()
+        maximumError = errors.max()
     }
     
 }
