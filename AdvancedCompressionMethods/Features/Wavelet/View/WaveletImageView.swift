@@ -33,7 +33,7 @@ struct WaveletImageView: View {
                     Text("Load Wavelet Image")
                 })
                 Button(action: {
-                    
+                    viewModel.saveWaveletFile()
                 }, label: {
                     Text("Save Wavelet Image")
                 })

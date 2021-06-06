@@ -39,7 +39,45 @@ final class WaveletViewModel: ObservableObject {
     }
     
     func decodeWaveletFile() {
-        // TODO: - Implement this
+        guard let waveletPath = waveletImageURL else { return }
+        let fileService = PopupFileService(fileURL: waveletPath, fileMode: .read)
+        let bitReader = BitReader(fileService: fileService)
+        
+        let width = bitReader.ReadNBits(numberOfBits: 32)!
+        let height = bitReader.ReadNBits(numberOfBits: 32)!
+        
+        var pixelData: [[UInt8]] = Array(repeating: Array(repeating: 0, count: Int(height)), count: Int(width))
+        
+        for i in 0..<Int(width) {
+            for j in 0..<Int(height) {
+                if let pixel = bitReader.ReadNBits(numberOfBits: 32) {
+                    pixelData[i][j] = UInt8(pixel)
+                }
+            }
+        }
+        
+        coder.loadData(pixelData: pixelData)
+        updateWaveletImage()
+    }
+    
+    func saveWaveletFile() {
+        guard let originalImage = originalImageURL else { return }
+        let originalFileName = originalImage.lastPathComponent
+        let fileService = FileService(fileName: "\(originalFileName).wvl", fileMode: .write)
+        let bitWrtier = BitWriter(fileService: fileService)
+        
+        let pixelData = coder.pixelData.map { $0.map { $0.toByte() }}
+        let width = pixelData[0].count
+        let height = pixelData[0].count
+        
+        bitWrtier.writeNBits(numberOfBits: 32, value: UInt32(width))
+        bitWrtier.writeNBits(numberOfBits: 32, value: UInt32(height))
+        
+        for i in 0..<width {
+            for j in 0..<height {
+                bitWrtier.writeNBits(numberOfBits: 32, value: UInt32(pixelData[i][j]))
+            }
+        }
     }
     
     public func getPixelData(from image: NSImage) {
