@@ -9,7 +9,7 @@ import Foundation
 import CoreGraphics
 
 enum WindowSize: CGFloat {
-    case width = 1440
+    case width = 1600
     case height = 900
 }
 

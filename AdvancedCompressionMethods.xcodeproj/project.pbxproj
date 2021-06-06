@@ -34,10 +34,23 @@
 		DEC0A3F525F53BCB00E6C565 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEC0A3F425F53BCB00E6C565 /* Preview Assets.xcassets */; };
 		DEC128BC266BDEC30040C48F /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = DEC128BB266BDEC30040C48F /* Charts */; };
 		DEC128BE266BDED60040C48F /* HistogramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC128BD266BDED60040C48F /* HistogramView.swift */; };
+		DEC128C3266BF3030040C48F /* WaveletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC128C2266BF3030040C48F /* WaveletView.swift */; };
 		DED0F8B125F53DB30055ABF3 /* BitWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0F8B025F53DB30055ABF3 /* BitWriter.swift */; };
 		DED0F8B425F53DB90055ABF3 /* BitReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0F8B325F53DB90055ABF3 /* BitReader.swift */; };
 		DED0F8B725F53E780055ABF3 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0F8B625F53E780055ABF3 /* FileService.swift */; };
 		DED0F8BA25F542DF0055ABF3 /* FileServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED0F8B925F542DF0055ABF3 /* FileServiceProtocol.swift */; };
+		DED38DF3266CAFF900240F63 /* WaveletOriginalImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED38DF2266CAFF900240F63 /* WaveletOriginalImageView.swift */; };
+		DED38DF5266CB10200240F63 /* WaveletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED38DF4266CB10200240F63 /* WaveletViewModel.swift */; };
+		DED38DF7266CB30A00240F63 /* WaveletImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED38DF6266CB30A00240F63 /* WaveletImageView.swift */; };
+		DED38DFA266CC4E000240F63 /* WaveletImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED38DF9266CC4E000240F63 /* WaveletImageProcessor.swift */; };
+		DED38DFC266CC51800240F63 /* WaveletAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED38DFB266CC51800240F63 /* WaveletAnalyzer.swift */; };
+		DED38DFE266CC52500240F63 /* WaveletSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED38DFD266CC52500240F63 /* WaveletSynthesizer.swift */; };
+		DED38E00266CC62D00240F63 /* WaveletCoefficients.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED38DFF266CC62D00240F63 /* WaveletCoefficients.swift */; };
+		DED38E03266CCCE400240F63 /* WaveletAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED38E02266CCCE400240F63 /* WaveletAnalysis.swift */; };
+		DED38E05266CCDB300240F63 /* MirrorLineValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED38E04266CCDB300240F63 /* MirrorLineValues.swift */; };
+		DED38E07266CE02700240F63 /* WaveletRightControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED38E06266CE02700240F63 /* WaveletRightControls.swift */; };
+		DED38E09266CE03300240F63 /* WaveletBottomControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED38E08266CE03300240F63 /* WaveletBottomControls.swift */; };
+		DED38E0B266CE60000240F63 /* LevelControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED38E0A266CE60000240F63 /* LevelControls.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,10 +96,23 @@
 		DEC0A3F625F53BCB00E6C565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEC0A3F725F53BCB00E6C565 /* AdvancedCompressionMethods.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AdvancedCompressionMethods.entitlements; sourceTree = "<group>"; };
 		DEC128BD266BDED60040C48F /* HistogramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistogramView.swift; sourceTree = "<group>"; };
+		DEC128C2266BF3030040C48F /* WaveletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveletView.swift; sourceTree = "<group>"; };
 		DED0F8B025F53DB30055ABF3 /* BitWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitWriter.swift; sourceTree = "<group>"; };
 		DED0F8B325F53DB90055ABF3 /* BitReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitReader.swift; sourceTree = "<group>"; };
 		DED0F8B625F53E780055ABF3 /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		DED0F8B925F542DF0055ABF3 /* FileServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileServiceProtocol.swift; sourceTree = "<group>"; };
+		DED38DF2266CAFF900240F63 /* WaveletOriginalImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveletOriginalImageView.swift; sourceTree = "<group>"; };
+		DED38DF4266CB10200240F63 /* WaveletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveletViewModel.swift; sourceTree = "<group>"; };
+		DED38DF6266CB30A00240F63 /* WaveletImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveletImageView.swift; sourceTree = "<group>"; };
+		DED38DF9266CC4E000240F63 /* WaveletImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveletImageProcessor.swift; sourceTree = "<group>"; };
+		DED38DFB266CC51800240F63 /* WaveletAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveletAnalyzer.swift; sourceTree = "<group>"; };
+		DED38DFD266CC52500240F63 /* WaveletSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveletSynthesizer.swift; sourceTree = "<group>"; };
+		DED38DFF266CC62D00240F63 /* WaveletCoefficients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveletCoefficients.swift; sourceTree = "<group>"; };
+		DED38E02266CCCE400240F63 /* WaveletAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveletAnalysis.swift; sourceTree = "<group>"; };
+		DED38E04266CCDB300240F63 /* MirrorLineValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MirrorLineValues.swift; sourceTree = "<group>"; };
+		DED38E06266CE02700240F63 /* WaveletRightControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveletRightControls.swift; sourceTree = "<group>"; };
+		DED38E08266CE03300240F63 /* WaveletBottomControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveletBottomControls.swift; sourceTree = "<group>"; };
+		DED38E0A266CE60000240F63 /* LevelControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelControls.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +201,7 @@
 			children = (
 				DEA879EE2659477400FEB11A /* ConfigConstants.swift */,
 				DE7FF7C8266412BD00F55011 /* Quantize.swift */,
+				DED38E04266CCDB300240F63 /* MirrorLineValues.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -247,6 +274,7 @@
 				DEC0A40125F53C6B00E6C565 /* Home */,
 				DEA879E326591CBE00FEB11A /* NearLossless */,
 				DEA879ED2659475F00FEB11A /* Utils */,
+				DEC128BF266BF00B0040C48F /* Wavelet */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -287,6 +315,38 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		DEC128BF266BF00B0040C48F /* Wavelet */ = {
+			isa = PBXGroup;
+			children = (
+				DED38E01266CCCAC00240F63 /* Model */,
+				DED38DF8266CC4CB00240F63 /* Coder */,
+				DEC128C0266BF2E30040C48F /* View */,
+				DEC128C1266BF2E80040C48F /* ViewModel */,
+			);
+			path = Wavelet;
+			sourceTree = "<group>";
+		};
+		DEC128C0266BF2E30040C48F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DEC128C2266BF3030040C48F /* WaveletView.swift */,
+				DED38DF2266CAFF900240F63 /* WaveletOriginalImageView.swift */,
+				DED38DF6266CB30A00240F63 /* WaveletImageView.swift */,
+				DED38E06266CE02700240F63 /* WaveletRightControls.swift */,
+				DED38E08266CE03300240F63 /* WaveletBottomControls.swift */,
+				DED38E0A266CE60000240F63 /* LevelControls.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DEC128C1266BF2E80040C48F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DED38DF4266CB10200240F63 /* WaveletViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		DED0F8AF25F53D9F0055ABF3 /* FileOperations */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +358,25 @@
 				DE7FF7BB2663A88B00F55011 /* PopupFileService.swift */,
 			);
 			path = FileOperations;
+			sourceTree = "<group>";
+		};
+		DED38DF8266CC4CB00240F63 /* Coder */ = {
+			isa = PBXGroup;
+			children = (
+				DED38DFB266CC51800240F63 /* WaveletAnalyzer.swift */,
+				DED38DF9266CC4E000240F63 /* WaveletImageProcessor.swift */,
+				DED38DFD266CC52500240F63 /* WaveletSynthesizer.swift */,
+			);
+			path = Coder;
+			sourceTree = "<group>";
+		};
+		DED38E01266CCCAC00240F63 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DED38DFF266CC62D00240F63 /* WaveletCoefficients.swift */,
+				DED38E02266CCCE400240F63 /* WaveletAnalysis.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,27 +459,40 @@
 				DE7FF7B826629DCE00F55011 /* ImageSaveMode.swift in Sources */,
 				DE7FF7C52663BD8200F55011 /* EncodingOptions.swift in Sources */,
 				DED0F8B425F53DB90055ABF3 /* BitReader.swift in Sources */,
+				DED38DFA266CC4E000240F63 /* WaveletImageProcessor.swift in Sources */,
 				DE7FF7CC26641B8800F55011 /* Numbers+Extensions.swift in Sources */,
 				DE7FF7AF26628DFE00F55011 /* OpenPanelMethods.swift in Sources */,
+				DED38E03266CCCE400240F63 /* WaveletAnalysis.swift in Sources */,
 				DED0F8B125F53DB30055ABF3 /* BitWriter.swift in Sources */,
+				DED38DF7266CB30A00240F63 /* WaveletImageView.swift in Sources */,
+				DED38DFE266CC52500240F63 /* WaveletSynthesizer.swift in Sources */,
 				DEB81E69266B588C001A630F /* ErrorMatrixView.swift in Sources */,
 				DEC0A3F025F53BCA00E6C565 /* HomeView.swift in Sources */,
 				DEA879EF2659477400FEB11A /* ConfigConstants.swift in Sources */,
 				DE7FF7BA2662A45800F55011 /* NearLosslessControlsView.swift in Sources */,
 				DE7FF7B32662924700F55011 /* OriginalImageView.swift in Sources */,
+				DED38DFC266CC51800240F63 /* WaveletAnalyzer.swift in Sources */,
 				DE7FF7B12662907300F55011 /* NearLosslessViewModel.swift in Sources */,
 				DEA879F82659580D00FEB11A /* NearLosslessDecoder.swift in Sources */,
+				DED38E00266CC62D00240F63 /* WaveletCoefficients.swift in Sources */,
 				DE7FF7C9266412BD00F55011 /* Quantize.swift in Sources */,
 				DEC128BE266BDED60040C48F /* HistogramView.swift in Sources */,
 				DED0F8B725F53E780055ABF3 /* FileService.swift in Sources */,
 				DEA879EA26591E5700FEB11A /* SidebarNavigation.swift in Sources */,
+				DED38E0B266CE60000240F63 /* LevelControls.swift in Sources */,
+				DED38E07266CE02700240F63 /* WaveletRightControls.swift in Sources */,
+				DED38DF5266CB10200240F63 /* WaveletViewModel.swift in Sources */,
 				DEA879F6265957FB00FEB11A /* NearLosslessEncoder.swift in Sources */,
 				DE7FF7C72663C10600F55011 /* DecodedImageView.swift in Sources */,
 				DEA879EC26591F4200FEB11A /* IntroView.swift in Sources */,
 				DEA879F2265950FF00FEB11A /* NearLosslessView.swift in Sources */,
+				DED38DF3266CAFF900240F63 /* WaveletOriginalImageView.swift in Sources */,
+				DED38E09266CE03300240F63 /* WaveletBottomControls.swift in Sources */,
+				DEC128C3266BF3030040C48F /* WaveletView.swift in Sources */,
 				DEC0A3EE25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift in Sources */,
 				DEA879E826591D4900FEB11A /* CheckBitOperations.swift in Sources */,
 				DE7FF7BC2663A88B00F55011 /* PopupFileService.swift in Sources */,
+				DED38E05266CCDB300240F63 /* MirrorLineValues.swift in Sources */,
 				DED0F8BA25F542DF0055ABF3 /* FileServiceProtocol.swift in Sources */,
 				DE7FF7C12663B0B500F55011 /* ValuePredictor.swift in Sources */,
 				DE7FF7C32663B68400F55011 /* NearLosslessMatrices.swift in Sources */,

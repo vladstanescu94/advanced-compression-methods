@@ -22,6 +22,11 @@ struct SidebarNavigation: View {
                 tag: 2,
                 selection: $selectedItem,
                 label: {Text("Near Lossless")})
+            NavigationLink(
+                destination: WaveletView(),
+                tag: 3,
+                selection: $selectedItem,
+                label: {Text("Wavelet")})
         }.listStyle(SidebarListStyle())
         .frame(minWidth: 200,
                maxHeight: .infinity,
