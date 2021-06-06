@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum AnalyzeMode {
+    case horizontal
+    case vertical
+}
+
 final class WaveletImageProcessor {
     let analyzer =  WaveletAnalyzer(lowCoefficients: AnalysisCoefficients.low,
                                     highCoefficients: AnalysisCoefficients.high)
@@ -25,29 +30,47 @@ final class WaveletImageProcessor {
         let length = pixelData[0].count / level
         
         for i in 0..<length {
-            let line = getHorizontalLine(number: i, length: length)
+            let line = getLine(number: i, length: length, mode: .horizontal)
             let analysedLine = analyzer.analyse(line: line)
-            replaceWithAnalysedLine(analysedLine: analysedLine, index: i)
+            replaceWithAnalysedLine(analysedLine: analysedLine, index: i, mode: .horizontal)
         }
     }
     
-    private func getHorizontalLine(number: Int, length: Int) -> [Double] {
+    private func getLine(number: Int, length: Int, mode: AnalyzeMode) -> [Double] {
         var line = [Double]()
         
-        for i in 0..<length {
-            line.append(pixelData[i][number])
+        switch mode {
+        case .horizontal:
+            for i in 0..<length {
+                line.append(pixelData[i][number])
+            }
+        case .vertical:
+            for i in 0..<length {
+                line.append(pixelData[number][i])
+            }
         }
         
         return line
     }
     
-    private func replaceWithAnalysedLine(analysedLine: WaveletAnalysis, index: Int) {
-        for i in 0..<analysedLine.rearrangedLow.count {
-            pixelData[i][index] = analysedLine.rearrangedLow[i]
-        }
-        
-        for i in 0..<analysedLine.rearrangedHigh.count {
-            pixelData[i + analysedLine.rearrangedLow.count][index] = analysedLine.rearrangedHigh[i]
+    private func replaceWithAnalysedLine(analysedLine: WaveletAnalysis, index: Int, mode: AnalyzeMode) {
+        switch mode {
+        case .horizontal:
+            for i in 0..<analysedLine.rearrangedLow.count {
+                pixelData[i][index] = analysedLine.rearrangedLow[i]
+            }
+            
+            for i in 0..<analysedLine.rearrangedHigh.count {
+                pixelData[i + analysedLine.rearrangedLow.count][index] = analysedLine.rearrangedHigh[i]
+            }
+        case .vertical:
+            for i in 0..<analysedLine.rearrangedLow.count {
+                pixelData[index][i] = analysedLine.rearrangedLow[i]
+            }
+            
+            for i in 0..<analysedLine.rearrangedHigh.count {
+                pixelData[index][i + analysedLine.rearrangedLow.count] = analysedLine.rearrangedHigh[i]
+            }
         }
     }
     
@@ -57,29 +80,9 @@ final class WaveletImageProcessor {
         let length = pixelData[0].count / level
         
         for i in 0..<length {
-            let line = getVerticalLine(number: i, length: length)
+            let line = getLine(number: i, length: length, mode: .vertical)
             let analysedLine = analyzer.analyse(line: line)
-            replaceWithVerticalAnalysedLine(analysedLine: analysedLine, index: i)
-        }
-    }
-    
-    private func getVerticalLine(number: Int, length: Int) -> [Double] {
-        var line = [Double]()
-        
-        for i in 0..<length {
-            line.append(pixelData[number][i])
-        }
-        
-        return line
-    }
-    
-    private func replaceWithVerticalAnalysedLine(analysedLine: WaveletAnalysis, index: Int) {
-        for i in 0..<analysedLine.rearrangedLow.count {
-            pixelData[index][i] = analysedLine.rearrangedLow[i]
-        }
-        
-        for i in 0..<analysedLine.rearrangedHigh.count {
-            pixelData[index][i + analysedLine.rearrangedLow.count] = analysedLine.rearrangedHigh[i]
+            replaceWithAnalysedLine(analysedLine: analysedLine, index: i, mode: .vertical)
         }
     }
     
@@ -89,10 +92,10 @@ final class WaveletImageProcessor {
         let length = pixelData[0].count / level
         
         for i in 0..<length {
-            let line = getHorizontalLine(number: i, length: length)
+            let line = getLine(number: i, length: length, mode: .horizontal)
             let synthesisFormat = formatForSynthesis(line: line)
             let synthesisedLine = synthesizer.synthesize(line: synthesisFormat)
-            replaceWithSynthesizedLine(synthesisedLine: synthesisedLine, index: i)
+            replaceWithSynthesizedLine(synthesisedLine: synthesisedLine, index: i, mode: .horizontal)
         }
     }
     
@@ -101,9 +104,16 @@ final class WaveletImageProcessor {
                                high: Array(line[(line.count / 2)..<line.count]))
     }
     
-    private func replaceWithSynthesizedLine(synthesisedLine: [Double], index: Int) {
-        for i in 0..<synthesisedLine.count {
-            pixelData[i][index] = synthesisedLine[i]
+    private func replaceWithSynthesizedLine(synthesisedLine: [Double], index: Int, mode: AnalyzeMode) {
+        switch mode {
+        case .horizontal:
+            for i in 0..<synthesisedLine.count {
+                pixelData[i][index] = synthesisedLine[i]
+            }
+        case .vertical:
+            for i in 0..<synthesisedLine.count {
+                pixelData[index][i] = synthesisedLine[i]
+            }
         }
     }
     
@@ -113,16 +123,10 @@ final class WaveletImageProcessor {
         let length = pixelData[0].count / level
         
         for i in 0..<length {
-            let line = getVerticalLine(number: i, length: length)
+            let line = getLine(number: i, length: length, mode: .vertical)
             let synthesisFormat = formatForSynthesis(line: line)
             let synthesisedLine = synthesizer.synthesize(line: synthesisFormat)
-            replaceWithVerticallySynthesizedLine(synthesisedLine: synthesisedLine, index: i)
-        }
-    }
-    
-    private func replaceWithVerticallySynthesizedLine(synthesisedLine: [Double], index: Int) {
-        for i in 0..<synthesisedLine.count {
-            pixelData[index][i] = synthesisedLine[i]
+            replaceWithSynthesizedLine(synthesisedLine: synthesisedLine, index: i, mode: .vertical)
         }
     }
 }

@@ -18,14 +18,12 @@ struct LevelControls: View {
                 VStack {
                     Text("Analysis")
                     Button {
-                        print("Horizontal analysis level \(level)")
                         viewModel.coder.analyseHorizontally(level: level)
                         viewModel.updateWaveletImage()
                     } label: {
                         Text("H")
                     }
                     Button {
-                        print("Vertical analysis level \(level)")
                         viewModel.coder.analyseVertically(level: level)
                         viewModel.updateWaveletImage()
                     } label: {
@@ -35,14 +33,12 @@ struct LevelControls: View {
                 VStack {
                     Text("Synthesis")
                     Button {
-                        print("Horizontal Synthesis level \(level)")
                         viewModel.coder.synthesisHorizontally(level: level)
                         viewModel.updateWaveletImage()
                     } label: {
                         Text("H")
                     }
                     Button {
-                        print("Vertical Synthesis level \(level)")
                         viewModel.coder.synthesisVertically(level: level)
                         viewModel.updateWaveletImage()
                     } label: {

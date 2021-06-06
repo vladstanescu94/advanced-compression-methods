@@ -14,7 +14,7 @@ struct WaveletBottomControls: View {
         HStack(spacing: 300) {
             HStack {
                 Button {
-                    print("testing errors")
+                    viewModel.testErrors()
                 } label: {
                     Text("Test errors")
                 }
@@ -25,25 +25,25 @@ struct WaveletBottomControls: View {
                 }
             }
             
-            VStack {
-                HStack {
-                    Text("X Highlight: ")
-                    TextField("X Highlight", text: $viewModel.highlightXString)
-                }
-                HStack {
-                    Text("Y Highlight: ")
-                    TextField("Y Highlight", text: $viewModel.highlightYString)
-                }
-                HStack {
-                    Text("Offset: ")
-                    TextField("Offset", text: $viewModel.offsetString)
-                }
-                HStack {
-                    Text("Scale: \(viewModel.scaleValue, specifier: "%.2f") ")
-                    Slider(value: $viewModel.scaleValue, in: 0.0...5.0)
-                }
-            }
-            .frame(maxWidth: 300)
+//            VStack {
+//                HStack {
+//                    Text("X Highlight: ")
+//                    TextField("X Highlight", text: $viewModel.highlightXString)
+//                }
+//                HStack {
+//                    Text("Y Highlight: ")
+//                    TextField("Y Highlight", text: $viewModel.highlightYString)
+//                }
+//                HStack {
+//                    Text("Offset: ")
+//                    TextField("Offset", text: $viewModel.offsetString)
+//                }
+//                HStack {
+//                    Text("Scale: \(viewModel.scaleValue, specifier: "%.2f") ")
+//                    Slider(value: $viewModel.scaleValue, in: 0.0...5.0)
+//                }
+//            }
+//            .frame(maxWidth: 300)
         }
     }
 }

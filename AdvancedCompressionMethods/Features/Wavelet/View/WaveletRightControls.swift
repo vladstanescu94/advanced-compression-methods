@@ -22,20 +22,19 @@ struct WaveletRightControls: View {
                 Button {
                     for i in 0..<viewModel.numberOfLevels {
                         viewModel.coder.analyseHorizontally(level: i + 1)
-                        viewModel.coder.analyseVertically(level: i + 1);
+                        viewModel.coder.analyseVertically(level: i + 1)
                     }
-                    
                     viewModel.updateWaveletImage()
                 } label: {
                     Text("Analysis levels")
                 }
                 
                 Button {
-                    for i in 0..<viewModel.numberOfLevels {
-                        viewModel.coder.synthesisHorizontally(level: i + 1)
-                        viewModel.coder.synthesisVertically(level: i + 1);
-                    }
                     
+                    for i in 0..<viewModel.numberOfLevels {
+                        viewModel.coder.synthesisVertically(level: viewModel.numberOfLevels - i)
+                        viewModel.coder.synthesisHorizontally(level: viewModel.numberOfLevels - i)
+                    }
                     viewModel.updateWaveletImage()
                 } label: {
                     Text("Synthesis levels")

@@ -13,10 +13,10 @@ final class WaveletViewModel: ObservableObject {
     @Published var originalImageURL: URL? = nil
     @Published var waveletImageURL: URL? = nil
     @Published var originalImagePixelValues: [[UInt8]]? = nil
-    @Published var highlightXString: String = "512"
-    @Published var highlightYString: String = "512"
-    @Published var offsetString: String = "128"
-    @Published var scaleValue: Double = 1.0
+//    @Published var highlightXString: String = "512"
+//    @Published var highlightYString: String = "512"
+//    @Published var offsetString: String = "128"
+//    @Published var scaleValue: Double = 1.0
     @Published var minError: Double? = nil
     @Published var maxError: Double? = nil
     @Published var numberOfLevels: Int = 1
@@ -30,56 +30,56 @@ final class WaveletViewModel: ObservableObject {
         return NSImage(contentsOf: imageURL)
     }
     
-    var highlightXValue: Int {
-        let filtered = highlightXString.filter { "0123456789".contains($0) }
-
-        if let value = Int(filtered) {
-            if value < 0 {
-                return 0
-            }
-            if value > 512 {
-                return 512
-            }
-
-            return value
-        }
-
-        return 0
-    }
-    
-    var highlightYValue: Int {
-        let filtered = highlightYString.filter { "0123456789".contains($0) }
-
-        if let value = Int(filtered) {
-            if value < 0 {
-                return 0
-            }
-            if value > 512 {
-                return 512
-            }
-
-            return value
-        }
-
-        return 0
-    }
-    
-    var offsetValue: Int {
-        let filtered = offsetString.filter { "0123456789".contains($0) }
-
-        if let value = Int(filtered) {
-            if value < 0 {
-                return 0
-            }
-            if value > 128 {
-                return 128
-            }
-
-            return value
-        }
-
-        return 0
-    }
+//    var highlightXValue: Int {
+//        let filtered = highlightXString.filter { "0123456789".contains($0) }
+//
+//        if let value = Int(filtered) {
+//            if value < 0 {
+//                return 0
+//            }
+//            if value > 512 {
+//                return 512
+//            }
+//
+//            return value
+//        }
+//
+//        return 0
+//    }
+//
+//    var highlightYValue: Int {
+//        let filtered = highlightYString.filter { "0123456789".contains($0) }
+//
+//        if let value = Int(filtered) {
+//            if value < 0 {
+//                return 0
+//            }
+//            if value > 512 {
+//                return 512
+//            }
+//
+//            return value
+//        }
+//
+//        return 0
+//    }
+//
+//    var offsetValue: Int {
+//        let filtered = offsetString.filter { "0123456789".contains($0) }
+//
+//        if let value = Int(filtered) {
+//            if value < 0 {
+//                return 0
+//            }
+//            if value > 128 {
+//                return 128
+//            }
+//
+//            return value
+//        }
+//
+//        return 0
+//    }
     
     func setWaveletImage() {
         if let origURL = originalImageURL {
@@ -126,11 +126,11 @@ final class WaveletViewModel: ObservableObject {
         
         for i in 0..<width {
             for j in 0..<height {
-                var pixel = UInt8(abs(round(pixelData[j][i])))
+                var pixel = abs(round(pixelData[j][i])).toByte()
                 
-                if i >= highlightXValue || j >= highlightYValue {
-                    pixel = (Double(pixel) * scaleValue + Double(offsetValue)).toByte()
-                }
+//                if i >= highlightXValue || j >= highlightYValue {
+//                    pixel = (Double(pixel) * scaleValue + Double(offsetValue)).toByte()
+//                }
                 newPixelData.append(pixel)
             }
         }
@@ -157,5 +157,20 @@ final class WaveletViewModel: ObservableObject {
             
             value = newValue < 0 ? value : String(newValue)
         }
+    }
+    
+    func testErrors() {
+        guard let originalPixels = originalImagePixelValues else { return }
+        var errors = [Double]()
+        
+        for i in 0..<originalPixels[0].count {
+            for j in 0..<originalPixels[0].count {
+                let error = coder.pixelData[i][j] - Double(originalPixels[i][j])
+                errors.append(error)
+            }
+        }
+        
+        minError = errors.min()
+        maxError = errors.max()
     }
 }
