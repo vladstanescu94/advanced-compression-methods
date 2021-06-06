@@ -25,25 +25,31 @@ struct WaveletBottomControls: View {
                 }
             }
             
-//            VStack {
-//                HStack {
-//                    Text("X Highlight: ")
-//                    TextField("X Highlight", text: $viewModel.highlightXString)
-//                }
-//                HStack {
-//                    Text("Y Highlight: ")
-//                    TextField("Y Highlight", text: $viewModel.highlightYString)
-//                }
-//                HStack {
-//                    Text("Offset: ")
-//                    TextField("Offset", text: $viewModel.offsetString)
-//                }
-//                HStack {
-//                    Text("Scale: \(viewModel.scaleValue, specifier: "%.2f") ")
-//                    Slider(value: $viewModel.scaleValue, in: 0.0...5.0)
-//                }
-//            }
-//            .frame(maxWidth: 300)
+            VStack {
+                HStack {
+                    Text("Highlight X: \(viewModel.highlightXValue, specifier: "%.2f") ")
+                    Slider(value: $viewModel.highlightXValue, in: 0.0...512.0, step: 16.0)
+                }
+                HStack {
+                    Text("Highlight Y: \(viewModel.highlightYValue, specifier: "%.2f") ")
+                    Slider(value: $viewModel.highlightYValue, in: 0.0...512.0, step: 16.0)
+                }
+                HStack {
+                    Text("Offset: \(viewModel.offsetValue, specifier: "%.2f") ")
+                    Slider(value: $viewModel.offsetValue, in: 0.0...128.0)
+                }
+                HStack {
+                    Text("Scale: \(viewModel.scaleValue, specifier: "%.2f") ")
+                    Slider(value: $viewModel.scaleValue, in: 0.0...5.0)
+                }
+                Button {
+                    viewModel.updateWaveletImage()
+                } label: {
+                    Text("Update Image")
+                }
+
+            }
+            .frame(maxWidth: 300)
         }
     }
 }

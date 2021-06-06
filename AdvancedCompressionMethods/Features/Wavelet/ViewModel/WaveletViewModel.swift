@@ -13,10 +13,10 @@ final class WaveletViewModel: ObservableObject {
     @Published var originalImageURL: URL? = nil
     @Published var waveletImageURL: URL? = nil
     @Published var originalImagePixelValues: [[UInt8]]? = nil
-//    @Published var highlightXString: String = "512"
-//    @Published var highlightYString: String = "512"
-//    @Published var offsetString: String = "128"
-//    @Published var scaleValue: Double = 1.0
+    @Published var highlightXValue: Double = 512
+    @Published var highlightYValue: Double = 512
+    @Published var offsetValue: Double = 128.0
+    @Published var scaleValue: Double = 1.0
     @Published var minError: Double? = nil
     @Published var maxError: Double? = nil
     @Published var numberOfLevels: Int = 1
@@ -30,57 +30,6 @@ final class WaveletViewModel: ObservableObject {
         return NSImage(contentsOf: imageURL)
     }
     
-//    var highlightXValue: Int {
-//        let filtered = highlightXString.filter { "0123456789".contains($0) }
-//
-//        if let value = Int(filtered) {
-//            if value < 0 {
-//                return 0
-//            }
-//            if value > 512 {
-//                return 512
-//            }
-//
-//            return value
-//        }
-//
-//        return 0
-//    }
-//
-//    var highlightYValue: Int {
-//        let filtered = highlightYString.filter { "0123456789".contains($0) }
-//
-//        if let value = Int(filtered) {
-//            if value < 0 {
-//                return 0
-//            }
-//            if value > 512 {
-//                return 512
-//            }
-//
-//            return value
-//        }
-//
-//        return 0
-//    }
-//
-//    var offsetValue: Int {
-//        let filtered = offsetString.filter { "0123456789".contains($0) }
-//
-//        if let value = Int(filtered) {
-//            if value < 0 {
-//                return 0
-//            }
-//            if value > 128 {
-//                return 128
-//            }
-//
-//            return value
-//        }
-//
-//        return 0
-//    }
-    
     func setWaveletImage() {
         if let origURL = originalImageURL {
             waveletImage = NSImage(contentsOf: origURL)
@@ -90,7 +39,7 @@ final class WaveletViewModel: ObservableObject {
     }
     
     func decodeWaveletFile() {
-        
+        // TODO: - Implement this
     }
     
     public func getPixelData(from image: NSImage) {
@@ -112,7 +61,7 @@ final class WaveletViewModel: ObservableObject {
         originalImagePixelValues = pixels
     }
     
-    public func encode() {
+    public func loadCoder() {
         guard let pixelData = originalImagePixelValues else { return }
         coder.loadData(pixelData: pixelData)
     }
@@ -128,9 +77,9 @@ final class WaveletViewModel: ObservableObject {
             for j in 0..<height {
                 var pixel = abs(round(pixelData[j][i])).toByte()
                 
-//                if i >= highlightXValue || j >= highlightYValue {
-//                    pixel = (Double(pixel) * scaleValue + Double(offsetValue)).toByte()
-//                }
+                if i >= Int(highlightXValue) || j >= Int(highlightYValue) {
+                    pixel = (Double(pixel) * 1.0 + offsetValue).toByte()
+                }
                 newPixelData.append(pixel)
             }
         }
@@ -141,22 +90,24 @@ final class WaveletViewModel: ObservableObject {
         waveletImage = context!.makeImage().flatMap { NSImage(cgImage: $0, size: NSSize(width: width, height: height)) }
     }
     
-    func doubleHighlightValue(value: String) {
-        var value = value
-        if let intValue = Int(value) {
-            let newValue = intValue * 2
-            
-            value = newValue > 512 ? value : String(newValue)
-        }
+    func doubleHighlightXValue() {
+        let newValue = highlightXValue * 2
+        highlightXValue = newValue > 512 ? highlightXValue : newValue
     }
     
-    func halveHighlightValue(value: String) {
-        var value = value
-        if let intValue = Int(value) {
-            let newValue = intValue / 2
-            
-            value = newValue < 0 ? value : String(newValue)
-        }
+    func doubleHighlightYValue() {
+        let newValue = highlightYValue * 2
+        highlightYValue = newValue > 512 ? highlightYValue : newValue
+    }
+    
+    func halveHighlightXValue() {
+        let newValue = highlightXValue / 2
+        highlightXValue = newValue < 0 ? highlightXValue : newValue
+    }
+    
+    func halveHighlightYValue() {
+        let newValue = highlightYValue / 2
+        highlightYValue = newValue < 0 ? highlightYValue : newValue
     }
     
     func testErrors() {

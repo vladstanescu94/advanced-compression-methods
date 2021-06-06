@@ -28,7 +28,7 @@ struct WaveletOriginalImageView: View {
                         viewModel.originalImageURL = url
                         viewModel.setWaveletImage()
                         viewModel.getPixelData(from: viewModel.originalImage!)
-                        viewModel.encode()
+                        viewModel.loadCoder()
                     }
                     
                 }, label: {

@@ -23,6 +23,9 @@ struct WaveletRightControls: View {
                     for i in 0..<viewModel.numberOfLevels {
                         viewModel.coder.analyseHorizontally(level: i + 1)
                         viewModel.coder.analyseVertically(level: i + 1)
+                        
+                        viewModel.halveHighlightXValue()
+                        viewModel.halveHighlightYValue()
                     }
                     viewModel.updateWaveletImage()
                 } label: {
@@ -34,6 +37,9 @@ struct WaveletRightControls: View {
                     for i in 0..<viewModel.numberOfLevels {
                         viewModel.coder.synthesisVertically(level: viewModel.numberOfLevels - i)
                         viewModel.coder.synthesisHorizontally(level: viewModel.numberOfLevels - i)
+                        
+                        viewModel.doubleHighlightXValue()
+                        viewModel.doubleHighlightYValue()
                     }
                     viewModel.updateWaveletImage()
                 } label: {

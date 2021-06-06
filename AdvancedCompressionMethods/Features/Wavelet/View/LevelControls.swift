@@ -19,12 +19,14 @@ struct LevelControls: View {
                     Text("Analysis")
                     Button {
                         viewModel.coder.analyseHorizontally(level: level)
+                        viewModel.halveHighlightXValue()
                         viewModel.updateWaveletImage()
                     } label: {
                         Text("H")
                     }
                     Button {
                         viewModel.coder.analyseVertically(level: level)
+                        viewModel.halveHighlightYValue()
                         viewModel.updateWaveletImage()
                     } label: {
                         Text("V")
@@ -34,12 +36,14 @@ struct LevelControls: View {
                     Text("Synthesis")
                     Button {
                         viewModel.coder.synthesisHorizontally(level: level)
+                        viewModel.doubleHighlightXValue()
                         viewModel.updateWaveletImage()
                     } label: {
                         Text("H")
                     }
                     Button {
                         viewModel.coder.synthesisVertically(level: level)
+                        viewModel.doubleHighlightYValue()
                         viewModel.updateWaveletImage()
                     } label: {
                         Text("V")
