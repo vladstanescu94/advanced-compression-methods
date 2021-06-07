@@ -116,7 +116,7 @@ final class WaveletViewModel: ObservableObject {
                 var pixel = abs(round(pixelData[j][i])).toByte()
                 
                 if i >= Int(highlightXValue) || j >= Int(highlightYValue) {
-                    pixel = (Double(pixel) * 1.0 + offsetValue).toByte()
+                    pixel = (Double(pixel) * scaleValue + offsetValue).toByte()
                 }
                 newPixelData.append(pixel)
             }
@@ -161,5 +161,29 @@ final class WaveletViewModel: ObservableObject {
         
         minError = errors.min()
         maxError = errors.max()
+    }
+    
+    // MARK: - Mass Analyze / Synthesize
+    
+    func analyzeXLevels() {
+        for i in 0..<numberOfLevels {
+            coder.analyseHorizontally(level: i + 1)
+            coder.analyseVertically(level: i + 1)
+            
+            halveHighlightXValue()
+            halveHighlightYValue()
+        }
+        updateWaveletImage()
+    }
+    
+    func synthesiseXLevels() {
+        for i in 0..<numberOfLevels {
+            coder.synthesisVertically(level: numberOfLevels - i)
+            coder.synthesisHorizontally(level: numberOfLevels - i)
+            
+            doubleHighlightXValue()
+            doubleHighlightYValue()
+        }
+        updateWaveletImage()
     }
 }

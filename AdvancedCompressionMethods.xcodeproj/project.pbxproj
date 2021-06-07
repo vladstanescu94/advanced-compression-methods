@@ -20,7 +20,6 @@
 		DE7FF7C72663C10600F55011 /* DecodedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7C62663C10600F55011 /* DecodedImageView.swift */; };
 		DE7FF7C9266412BD00F55011 /* Quantize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7C8266412BD00F55011 /* Quantize.swift */; };
 		DE7FF7CC26641B8800F55011 /* Numbers+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FF7CB26641B8800F55011 /* Numbers+Extensions.swift */; };
-		DEA879E826591D4900FEB11A /* CheckBitOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879E726591D4900FEB11A /* CheckBitOperations.swift */; };
 		DEA879EA26591E5700FEB11A /* SidebarNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879E926591E5700FEB11A /* SidebarNavigation.swift */; };
 		DEA879EC26591F4200FEB11A /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879EB26591F4200FEB11A /* IntroView.swift */; };
 		DEA879EF2659477400FEB11A /* ConfigConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA879EE2659477400FEB11A /* ConfigConstants.swift */; };
@@ -80,7 +79,6 @@
 		DE7FF7C62663C10600F55011 /* DecodedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedImageView.swift; sourceTree = "<group>"; };
 		DE7FF7C8266412BD00F55011 /* Quantize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quantize.swift; sourceTree = "<group>"; };
 		DE7FF7CB26641B8800F55011 /* Numbers+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numbers+Extensions.swift"; sourceTree = "<group>"; };
-		DEA879E726591D4900FEB11A /* CheckBitOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBitOperations.swift; sourceTree = "<group>"; };
 		DEA879E926591E5700FEB11A /* SidebarNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarNavigation.swift; sourceTree = "<group>"; };
 		DEA879EB26591F4200FEB11A /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		DEA879EE2659477400FEB11A /* ConfigConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigConstants.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 		DEA879E626591D2500FEB11A /* Extra */ = {
 			isa = PBXGroup;
 			children = (
-				DEA879E726591D4900FEB11A /* CheckBitOperations.swift */,
 			);
 			path = Extra;
 			sourceTree = "<group>";
@@ -490,7 +487,6 @@
 				DED38E09266CE03300240F63 /* WaveletBottomControls.swift in Sources */,
 				DEC128C3266BF3030040C48F /* WaveletView.swift in Sources */,
 				DEC0A3EE25F53BCA00E6C565 /* AdvancedCompressionMethodsApp.swift in Sources */,
-				DEA879E826591D4900FEB11A /* CheckBitOperations.swift in Sources */,
 				DE7FF7BC2663A88B00F55011 /* PopupFileService.swift in Sources */,
 				DED38E05266CCDB300240F63 /* MirrorLineValues.swift in Sources */,
 				DED0F8BA25F542DF0055ABF3 /* FileServiceProtocol.swift in Sources */,

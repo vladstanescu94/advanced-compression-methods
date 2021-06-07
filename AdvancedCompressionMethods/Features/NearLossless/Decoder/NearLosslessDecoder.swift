@@ -59,6 +59,8 @@ final class NearLosslessDecoder {
         return nil
     }
     
+    // MARK: - Matrix read
+    
     private func readErrorMatrix(saveMode: ImageSaveMode) -> [[Int]] {
         switch saveMode {
         case .arithmetic:
@@ -136,6 +138,8 @@ final class NearLosslessDecoder {
         
         return bitsToRead
     }
+    
+    // MARK: - Get Pixel Values
     
     private func getCodes(from errors: [[Int]], with options: EncodingOptions) -> NearLosslessMatrices {
         let predictor = ValuePredictor(predictorType: options.predictorType)
