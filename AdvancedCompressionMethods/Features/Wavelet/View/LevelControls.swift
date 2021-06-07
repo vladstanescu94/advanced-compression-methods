@@ -18,16 +18,20 @@ struct LevelControls: View {
                 VStack {
                     Text("Analysis")
                     Button {
-                        viewModel.coder.analyseHorizontally(level: level)
-                        viewModel.halveHighlightYValue()
-                        viewModel.updateWaveletImage()
+                        DispatchQueue.main.async {
+                            viewModel.coder.analyseHorizontally(level: level)
+                            viewModel.halveHighlightYValue()
+                            viewModel.updateWaveletImage()
+                        }
                     } label: {
                         Text("H")
                     }
                     Button {
-                        viewModel.coder.analyseVertically(level: level)
-                        viewModel.halveHighlightXValue()
-                        viewModel.updateWaveletImage()
+                        DispatchQueue.main.async {
+                            viewModel.coder.analyseVertically(level: level)
+                            viewModel.halveHighlightXValue()
+                            viewModel.updateWaveletImage()
+                        }
                     } label: {
                         Text("V")
                     }
@@ -35,16 +39,20 @@ struct LevelControls: View {
                 VStack {
                     Text("Synthesis")
                     Button {
-                        viewModel.coder.synthesisHorizontally(level: level)
-                        viewModel.doubleHighlightYValue()
-                        viewModel.updateWaveletImage()
+                        DispatchQueue.main.async {
+                            viewModel.coder.synthesisHorizontally(level: level)
+                            viewModel.doubleHighlightYValue()
+                            viewModel.updateWaveletImage()
+                        }
                     } label: {
                         Text("H")
                     }
                     Button {
-                        viewModel.coder.synthesisVertically(level: level)
-                        viewModel.doubleHighlightXValue()
-                        viewModel.updateWaveletImage()
+                        DispatchQueue.main.async {
+                            viewModel.coder.synthesisVertically(level: level)
+                            viewModel.doubleHighlightXValue()
+                            viewModel.updateWaveletImage()
+                        }
                     } label: {
                         Text("V")
                     }

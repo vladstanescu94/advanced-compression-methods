@@ -20,13 +20,17 @@ struct WaveletRightControls: View {
             
             VStack {
                 Button {
-                    viewModel.analyzeXLevels()
+                    DispatchQueue.main.async {
+                        viewModel.analyzeXLevels()
+                    }
                 } label: {
                     Text("Analysis levels")
                 }
                 
                 Button {
-                    viewModel.synthesiseXLevels()
+                    DispatchQueue.main.async {
+                        viewModel.synthesiseXLevels()
+                    }
                 } label: {
                     Text("Synthesis levels")
                 }
