@@ -123,8 +123,9 @@ final class WaveletViewModel: ObservableObject {
         }
         
         let colorSpace = CGColorSpaceCreateDeviceGray()
-        let somePointer = UnsafeMutablePointer(mutating: newPixelData)
-        let context = CGContext(data: somePointer, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width, space: colorSpace, bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue).rawValue)
+        let uint8Pointer = UnsafeMutablePointer<UInt8>.allocate(capacity: newPixelData.count)
+        uint8Pointer.initialize(from: &newPixelData, count: newPixelData.count)
+        let context = CGContext(data: uint8Pointer, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width, space: colorSpace, bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue).rawValue)
         waveletImage = context!.makeImage().flatMap { NSImage(cgImage: $0, size: NSSize(width: width, height: height)) }
     }
     
