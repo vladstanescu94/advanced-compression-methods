@@ -1,10 +1,3 @@
-//
-//  SidebarNavigation.swift
-//  AdvancedCompressionMethods
-//
-//  Created by Vlad Stanescu on 22.05.2021.
-//
-
 import SwiftUI
 
 struct SidebarNavigation: View {
@@ -31,12 +24,5 @@ struct SidebarNavigation: View {
         .frame(minWidth: 200,
                maxHeight: .infinity,
                alignment: .topLeading)
-    }
-}
-
-struct SidebarNavigation_Previews: PreviewProvider {
-    @State static var selectedItem: Int? = 1
-    static var previews: some View {
-        SidebarNavigation(selectedItem: $selectedItem)
     }
 }

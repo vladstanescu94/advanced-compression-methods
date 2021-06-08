@@ -1,10 +1,3 @@
-//
-//  PopupFileService.swift
-//  AdvancedCompressionMethods
-//
-//  Created by Vlad Stanescu on 30.05.2021.
-//
-
 import Foundation
 
 class PopupFileService: FileServiceProtocol {

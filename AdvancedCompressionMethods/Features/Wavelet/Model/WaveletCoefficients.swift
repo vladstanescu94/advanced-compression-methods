@@ -1,10 +1,3 @@
-//
-//  WaveletCoefficients.swift
-//  AdvancedCompressionMethods
-//
-//  Created by Vlad Stanescu on 06.06.2021.
-//
-
 import Foundation
 
 struct AnalysisCoefficients {

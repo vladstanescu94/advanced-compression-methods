@@ -1,10 +1,3 @@
-//
-//  WaveletView.swift
-//  AdvancedCompressionMethods
-//
-//  Created by Vlad Stanescu on 05.06.2021.
-//
-
 import SwiftUI
 import Cocoa
 

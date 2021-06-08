@@ -1,10 +1,3 @@
-//
-//  WaveletRightControls.swift
-//  AdvancedCompressionMethods
-//
-//  Created by Vlad Stanescu on 06.06.2021.
-//
-
 import SwiftUI
 
 struct WaveletRightControls: View {

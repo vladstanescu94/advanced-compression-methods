@@ -1,10 +1,3 @@
-//
-//  OpenPanelMethods.swift
-//  AdvancedCompressionMethods
-//
-//  Created by Vlad Stanescu on 29.05.2021.
-//
-
 import Foundation
 import Cocoa
 

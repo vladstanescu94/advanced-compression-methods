@@ -1,10 +1,3 @@
-//
-//  NearLosslessViewModel.swift
-//  AdvancedCompressionMethods
-//
-//  Created by Vlad Stanescu on 29.05.2021.
-//
-
 import Foundation
 import Cocoa
 import Charts
@@ -193,5 +186,4 @@ final class NearLosslessViewModel: ObservableObject {
         minimumError = errors.min()
         maximumError = errors.max()
     }
-    
 }

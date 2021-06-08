@@ -1,10 +1,3 @@
-//
-//  IntroView.swift
-//  AdvancedCompressionMethods
-//
-//  Created by Vlad Stanescu on 22.05.2021.
-//
-
 import SwiftUI
 
 struct IntroView: View {
@@ -26,11 +19,5 @@ struct IntroView: View {
         .frame(maxWidth: .infinity,
                maxHeight: .infinity,
                alignment: .center)
-    }
-}
-
-struct IntroView_Previews: PreviewProvider {
-    static var previews: some View {
-        IntroView()
     }
 }

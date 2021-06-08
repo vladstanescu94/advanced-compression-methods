@@ -1,10 +1,3 @@
-//
-//  HomeView.swift
-//  AdvancedCompressionMethods
-//
-//  Created by Vlad Stanescu on 07.03.2021.
-//
-
 import SwiftUI
 
 struct HomeView: View {
@@ -18,12 +11,5 @@ struct HomeView: View {
         .frame(width: WindowSize.width.rawValue,
                height: WindowSize.height.rawValue,
                alignment: .center)
-    }
-}
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-            .previewLayout(PreviewLayout.fixed(width: 800, height: 600))
     }
 }

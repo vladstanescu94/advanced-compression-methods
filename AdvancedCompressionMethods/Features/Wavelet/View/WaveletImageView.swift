@@ -1,10 +1,3 @@
-//
-//  WaveletImageView.swift
-//  AdvancedCompressionMethods
-//
-//  Created by Vlad Stanescu on 06.06.2021.
-//
-
 import SwiftUI
 
 struct WaveletImageView: View {

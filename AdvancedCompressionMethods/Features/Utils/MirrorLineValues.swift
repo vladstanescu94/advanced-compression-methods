@@ -1,10 +1,3 @@
-//
-//  MirrorLineValues.swift
-//  AdvancedCompressionMethods
-//
-//  Created by Vlad Stanescu on 06.06.2021.
-//
-
 import Foundation
 
 func mirrorLineValues<T> (line: [T]) -> [T] {

@@ -1,10 +1,3 @@
-//
-//  HistogramView.swift
-//  AdvancedCompressionMethods
-//
-//  Created by Vlad Stanescu on 05.06.2021.
-//
-
 import SwiftUI
 import Charts
 
@@ -23,7 +16,6 @@ struct HistogramView: NSViewRepresentable {
         nsView.noDataText = "No Data"
         nsView.data = BarChartData(dataSet: dataSet)
         nsView.rightAxis.enabled = false
-        nsView.setScaleEnabled(false)
         nsView.autoScaleMinMaxEnabled = false
         
     }
